@@ -6,13 +6,15 @@ import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
+    <div className="app">
+      <header className="app-header">
         <NavBar />
       </header>
       <body>
-        <SideBar />
-        <MainContainer />
+        <div className="body-wrapper">
+          <SideBar style={{border:"1px solid red"}}/>
+          <MainContainer style={{border:"1px solid blue"}} />
+        </div>
       </body>
     </div>
   );
