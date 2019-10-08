@@ -2,3 +2,18 @@
     width:100%;
     top:0;
 }
+
+.iconContainer{
+    display: flex;
+    flex-direction: row;
+    width: 234px;
+    font-size: 28px;
+    padding: 0;
+    margin-right: -13px;
+
+}
+
+.iconContainer svg{
+    margin: 0 13px;
+    padding: 0;
+}
