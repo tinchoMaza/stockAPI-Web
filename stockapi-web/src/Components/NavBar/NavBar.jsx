@@ -37,20 +37,22 @@ const NavBar = () => {
     <div className="nav-bar-wrapper">
       <AppBar position="static" color="inherit" style={styles.appBar}>
         <Toolbar style={styles.toolBar}>
-          <IconButton edge="start"  color="inherit" aria-label="menu">
-            <MenuIcon fontSize="inherit" />
-          </IconButton>
+          <div className="menu-icon-container">
+            <IconButton style={styles.iconButton} aria-label="menu">
+              <MenuIcon fontSize="inherit" />
+            </IconButton>
+          </div>
           <Typography variant="h8" >
             Stock App
           </Typography>
-          <div className="iconContainer">
+          <div className="top-right-icons-container">
             <IconButton style={styles.iconButton} aria-label="search">
               <SearchIcon fontSize="inherit" />
             </IconButton>
-            <IconButton style={styles.iconButton}  aria-label="search">
+            <IconButton style={styles.iconButton}  aria-label="help">
               <HelpOutlineIcon fontSize="inherit"  />
             </IconButton>
-            <IconButton style={styles.iconButton}  aria-label="search">
+            <IconButton style={styles.iconButton}  aria-label="login">
               <PersonIcon fontSize="inherit" />
             </IconButton>
           </div>

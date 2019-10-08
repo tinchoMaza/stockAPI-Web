@@ -3,17 +3,21 @@
     top:0;
 }
 
-.iconContainer{
+.top-right-icons-container{
     display: flex;
     flex-direction: row;
-    width: 234px;
-    font-size: 28px;
+    width: 222px;
+    font-size: 24px;
     padding: 0;
     margin-right: -13px;
 
 }
 
-.iconContainer svg{
+.top-right-icons-container svg{
     margin: 0 13px;
     padding: 0;
+}
+
+.menu-icon-container {
+    font-size: 24px;
 }
