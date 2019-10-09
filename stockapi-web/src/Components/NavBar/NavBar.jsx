@@ -32,29 +32,41 @@ const styles = {
     }
 }
 
-const NavBar = () => {
+const NavBar = (props) => {
   return (
-    <div className="nav-bar-wrapper">
+    <div className="nav-bar-container">
       <AppBar position="static" color="inherit" style={styles.appBar}>
         <Toolbar style={styles.toolBar}>
           <div className="menu-icon-container">
-            <IconButton style={styles.iconButton} aria-label="menu">
+            <IconButton style={styles.iconButton} aria-label="menu" onClick={props.toggleMenuVisibility}>
               <MenuIcon fontSize="inherit" />
             </IconButton>
           </div>
-          <Typography variant="h8" >
-            Stock App
-          </Typography>
+          <div className="logo">
+            <Typography variant="h8" >
+              <p><a href="https://knowyourmeme.com/memes/stonks">
+                Stönks App
+              </a></p>
+            </Typography>
+          </div>
           <div className="top-right-icons-container">
-            <IconButton style={styles.iconButton} aria-label="search">
-              <SearchIcon fontSize="inherit" />
-            </IconButton>
-            <IconButton style={styles.iconButton}  aria-label="help">
-              <HelpOutlineIcon fontSize="inherit"  />
-            </IconButton>
-            <IconButton style={styles.iconButton}  aria-label="login">
-              <PersonIcon fontSize="inherit" />
-            </IconButton>
+            <ul>
+              <li>
+                <IconButton style={styles.iconButton} aria-label="search">
+                  <SearchIcon fontSize="inherit" />
+                </IconButton>
+              </li>
+              <li>
+                <IconButton style={styles.iconButton}  aria-label="help">
+                  <HelpOutlineIcon fontSize="inherit"  />
+                </IconButton>
+              </li>
+              <li>
+                <IconButton style={styles.iconButton}  aria-label="login">
+                  <PersonIcon fontSize="inherit" />
+                </IconButton>
+              </li>
+            </ul>
           </div>
         </Toolbar>
       </AppBar>

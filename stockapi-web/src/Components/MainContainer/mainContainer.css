@@ -1,6 +1,11 @@
 .main-container {
     overflow: scroll;
-    width: 83%;
+    /* width: 83%; */
     margin-top: 15px;
+}
+
+.sorting-selection p{
+    float: left;
+    margin: 5px 50px;
 }
   

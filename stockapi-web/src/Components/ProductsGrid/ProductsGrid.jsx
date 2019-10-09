@@ -5,11 +5,13 @@ import Paper from '@material-ui/core/Paper';
 
 
 const useStyles = makeStyles(theme => ({
+    container: {
+        margin: '10px',
+    },
     paper: {
-      height: 340,
+        height: 340,
       width: 360,
     },
-
   }));
   
 export default function ProductsGrid() {
@@ -18,7 +20,7 @@ export default function ProductsGrid() {
     return (
         <div>
             <Grid container spacing={2}>
-                <Grid item xs={12}>
+                <Grid item xs={12} className={classes.container}>
                     <Grid container justify="center" spacing={2}>
                     {[0, 1, 2, 4].map(value => (
                         <Grid key={value} item>

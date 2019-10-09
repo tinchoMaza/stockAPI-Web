@@ -1,23 +1,32 @@
-import React from 'react';
+import React, { Component } from 'react'
 import NavBar from './Components/NavBar/NavBar'
-import SideBar from './Components/SideBar/SideBar'
-import MainContainer from './Components/MainContainer/MainContainer'
+import Body from './Components/Body/Body'
 import './App.css';
 
-function App() {
-  return (
-    <div className="app">
-      <header className="app-header">
-        <NavBar />
-      </header>
-      <body>
-        <div className="body-wrapper">
-          <SideBar style={{border:"1px solid red"}}/>
-          <MainContainer style={{border:"1px solid blue"}} />
-        </div>
-      </body>
-    </div>
-  );
+
+
+export default class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = { 
+        menuIsVisible: true,
+    }
+    this.toggleMenuVisibility = this.toggleMenuVisibility.bind(this)
 }
 
-export default App;
+toggleMenuVisibility() {
+  this.setState({menuIsVisible : !this.state.menuIsVisible})
+  console.log(this.state.menuIsVisible)
+}
+
+  render() {
+    return (
+      <div className="app">
+        <header className="app-header">
+          <NavBar toggleMenuVisibility={this.toggleMenuVisibility} />
+        </header>
+        <Body menuIsVisible={this.state.menuIsVisible}/>
+      </div>
+    )
+  }
+}
