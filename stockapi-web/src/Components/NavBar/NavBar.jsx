@@ -2,7 +2,6 @@ import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from 'mdi-react/MenuIcon';
 import SearchIcon from '@material-ui/icons/Search';
@@ -29,6 +28,9 @@ const styles = {
       edge: 'start', 
       color: 'inherit',
       fontSize: 'inherit' ,
+    },
+    buttonText:{
+      padding:'10px'
     }
 }
 
@@ -62,8 +64,11 @@ const NavBar = (props) => {
                 </IconButton>
               </li>
               <li>
-                <IconButton style={styles.iconButton}  aria-label="login">
+                <IconButton style={styles.iconButton}  aria-label="login" onClick={props.handleLogin}>
                   <PersonIcon fontSize="inherit" />
+                  <Typography style={styles.buttonText}>
+                  Login
+                  </Typography>
                 </IconButton>
               </li>
             </ul>

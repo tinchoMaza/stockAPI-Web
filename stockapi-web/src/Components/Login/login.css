@@ -1,0 +1,39 @@
+
+.login-wrapper{
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.overlay-layer{
+    border-radius: 50%;
+    height: 200vw;
+    width: 200vw;
+    display: flex;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    transition: all 1.5s ease;
+}
+
+.login-container{   
+    text-align: center;
+    max-width: 90vw;
+    max-height: 100vh;
+}
+
+.login-inner p {
+    color:white;
+}
+
+.form-container {
+
+    background-color: aliceblue;
+    border-radius: 15px;
+}

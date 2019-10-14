@@ -7,15 +7,10 @@ export default class SideBar extends Component {
         this.state = { 
             visible: true,
         }
-        this.toggleVisibility = this.toggleVisibility.bind(this)
     }
 
     componentWillReceiveProps(nextProps) {
         this.setState({ visible: nextProps.visible });  
-    }
-
-    toggleVisibility(){
-        this.setState({visible: !this.state.visible})
     }
     
     render() {

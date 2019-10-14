@@ -10,8 +10,10 @@ export default class App extends Component {
     super(props)
     this.state = { 
         menuIsVisible: true,
+        loginIsVisible: false,
     }
     this.toggleMenuVisibility = this.toggleMenuVisibility.bind(this)
+    this.handleLogin = this.handleLogin.bind(this)
 }
 
 toggleMenuVisibility() {
@@ -19,13 +21,24 @@ toggleMenuVisibility() {
   console.log(this.state.menuIsVisible)
 }
 
+handleLogin() {
+  this.setState({loginIsVisible:!this.state.loginIsVisible})
+  console.log(this.state.loginIsVisible)
+}
+
   render() {
     return (
       <div className="app">
         <header className="app-header">
-          <NavBar toggleMenuVisibility={this.toggleMenuVisibility} />
+          <NavBar 
+            toggleMenuVisibility={this.toggleMenuVisibility} 
+            handleLogin={this.handleLogin} 
+          />
         </header>
-        <Body menuIsVisible={this.state.menuIsVisible}/>
+        <Body 
+          menuIsVisible={this.state.menuIsVisible}
+          loginIsVisible={this.state.loginIsVisible}
+        />
       </div>
     )
   }
