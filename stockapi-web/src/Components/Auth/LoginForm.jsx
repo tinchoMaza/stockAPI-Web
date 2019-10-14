@@ -1,13 +1,8 @@
 import React, { Component } from 'react'
 import TextField from '@material-ui/core/TextField'
 import { Button } from '@material-ui/core';
-
 import { makeStyles, withStyles } from '@material-ui/styles';
-
-import "./login.css"
-
-
-
+import "./auth.css"
 
 const StyledButton = withStyles({
     root: {
@@ -49,10 +44,8 @@ const useStyles = makeStyles(theme => ({
     },
     textField: {
       width: 300,
-      backgroundColor: '#eee',
       borderRadius: '5px',
-      opacity: 1,
-      color: '#fff'
+
     },
   }));
 

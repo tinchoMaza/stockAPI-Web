@@ -1,5 +1,5 @@
 
-.login-wrapper{
+.auth-wrapper{
     position: fixed;
     top: 0;
     right: 0;
@@ -22,18 +22,13 @@
     transition: all 1.5s ease;
 }
 
-.login-container{   
+.auth-container{   
     text-align: center;
     max-width: 90vw;
     max-height: 100vh;
 }
 
-.login-inner p {
-    color:white;
-}
-
 .form-container {
-
     background-color: aliceblue;
     border-radius: 15px;
 }

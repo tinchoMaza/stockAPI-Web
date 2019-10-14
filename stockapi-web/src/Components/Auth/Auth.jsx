@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import LoginForm from './LoginForm'
-import "./login.css"
+import "./auth.css"
 
-export default class Login extends Component {
+export default class Auth extends Component {
     constructor(props) {
         super(props)
         this.state = { 
@@ -39,14 +39,10 @@ export default class Login extends Component {
     render() {
         if(this.state.visible){
             return (
-                <div className="login-wrapper" style={this.styles.wrapperOn}>
+                <div className="auth-wrapper" style={this.styles.wrapperOn}>
                     <div className="overlay-layer" style={this.styles.overlayOn}>
-                        <div className="login-container" style={this.styles.containerOn}>
-                            <div className="login-inner">
-
-                                
+                        <div className="auth-container" style={this.styles.containerOn}>
                                 <LoginForm/>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -55,11 +51,9 @@ export default class Login extends Component {
         }
         else {
             return (                 
-                <div className="login-wrapper" style={this.styles.wrapperOff}>
+                <div className="auth-wrapper" style={this.styles.wrapperOff}>
                     <div className="overlay-layer" style={this.styles.overlayOff}>
-                        <div className="login-container" style={this.styles.containerOff}>
-                            <div className="login-inner">
-                            </div>
+                        <div className="auth-container" style={this.styles.containerOff}>
                         </div>
                     </div>
                 </div>
