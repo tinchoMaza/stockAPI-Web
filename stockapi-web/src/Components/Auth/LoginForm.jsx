@@ -1,51 +1,20 @@
 import React from 'react'
 import TextField from '@material-ui/core/TextField'
-import Typography from '@material-ui/core/Typography';
-
 import { Button } from '@material-ui/core';
-import { makeStyles, withStyles } from '@material-ui/styles';
+import { makeStyles } from '@material-ui/styles';
 import "./auth.css"
 
-const PrimaryButton = withStyles({
-    root: {
-        backgroundColor: '#2da7cb',
-        color: 'white',
-        marginTop: '24px',
-
-        '&:hover': {
-            backgroundColor: '#00789a',
-
-        },
-    },
-})(Button)
-
-const SecondaryButton = withStyles({
-    root: {
-        backgroundColor: '#2da7cb',
-        color: 'white',
-        marginTop: '24px',
-
-        '&:hover': {
-            backgroundColor: '#00789a',
-
-        },
-    },
-})(Button)
-
-
-const StyledTextField = withStyles({
-    root: {
-        '& label.Mui-focused': {
-          color: '#2da7cb',
-        },
-        '& .MuiFilledInput-underline:after': {
-          borderBottomColor: '#2da7cb',
-          borderBottom: '4px solid',
-        },
-      },
-  })(TextField);
-
 const useStyles = makeStyles(theme => ({
+    primaryBtn: {
+        margin: theme.spacing(3),
+        color: theme.palette.common.white,
+      },
+      
+    secondaryBtn: {
+        margin: theme.spacing(3),
+        color: theme.palette.secondary,
+      },
+      
     container: {
       margin: 'auto',
       display: 'flex',
@@ -60,7 +29,13 @@ const useStyles = makeStyles(theme => ({
     textField: {
       width: 300,
       borderRadius: '5px',
-
+      '& label.Mui-focused': {
+        color: theme.palette.primary,
+      },
+      '& .MuiFilledInput-underline:after': {
+        borderBottomColor: theme.palette.primary.light,
+        borderBottomWidth: '4px',
+      },
     },
   }));
 
@@ -82,7 +57,7 @@ export default function LoginForm() {
     
     return (
         <form className={classes.container} onSubmit={handleSubmit} noValidate autoComplete="off">            
-            <StyledTextField
+            <TextField
                 id="username"
                 label="Username"
                 value={values.username}
@@ -93,9 +68,9 @@ export default function LoginForm() {
                 shrink: true,
                 }}          
                 margin="normal"
-                variant="filled"                                
+                variant="filled"                
             /> 
-            <StyledTextField
+            <TextField
                 id="password"
                 label="Password"
                 value={values.password}
@@ -108,8 +83,11 @@ export default function LoginForm() {
                 margin="normal"
                 variant="filled"
             />
-            {/* <SecondaryButton>Sign in</SecondaryButton> */}
-            <PrimaryButton>Sign in</PrimaryButton>
+            <div>
+                <Button variant="contained" color="default" className={classes.secondaryBtn}>Cancel</Button>
+                <Button variant="contained" color="primary" className={classes.primaryBtn}>Sign in</Button>
+            </div>
+
         </form>
     )
 }

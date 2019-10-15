@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import NavBar from './Components/NavBar/NavBar'
 import Body from './Components/Body/Body'
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core'
-import {red,cyan} from '@material-ui/core/colors'
 
 import './App.css';
 

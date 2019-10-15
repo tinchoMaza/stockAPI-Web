@@ -52,7 +52,7 @@ export default function AuthTabs() {
   const classes = useStyles();
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
-
+  
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -67,8 +67,8 @@ export default function AuthTabs() {
         <Tabs
           value={value}
           onChange={handleChange}
-          indicatorColor="primary"
-          textColor="secondary"
+          indicatorColor="secondary"
+          textColor="white"
           variant="fullWidth"
           aria-label="full width tabs example"
         >

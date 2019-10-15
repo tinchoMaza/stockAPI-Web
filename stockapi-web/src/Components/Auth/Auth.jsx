@@ -44,6 +44,7 @@ export default class Auth extends Component {
             this.props.toggleLoginVisibility()
         }
     }   
+
     render() {
         if(this.state.visible){
             return (
