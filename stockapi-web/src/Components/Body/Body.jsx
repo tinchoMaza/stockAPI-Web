@@ -9,7 +9,7 @@ export default class Body extends Component {
         <div className="body-wrapper">
             <SideBar visible={this.props.menuIsVisible}/>
             <MainContainer/>
-            <Auth visible={this.props.loginIsVisible}/>
+            <Auth visible={this.props.loginIsVisible} toggleLoginVisibility={this.props.toggleLoginVisibility}/>
         </div>
         )
     }

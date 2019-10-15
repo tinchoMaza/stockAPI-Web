@@ -13,7 +13,7 @@ import './navBar.css';
 const styles = {
     appBar:{
         width: '100%',
-        background: '#222222',
+        // background: '#222222',
         color: 'white',
         position: 'absolute',
         top: 0,
@@ -37,7 +37,7 @@ const styles = {
 const NavBar = (props) => {
   return (
     <div className="nav-bar-container">
-      <AppBar position="static" color="inherit" style={styles.appBar}>
+      <AppBar position="static" color="secondary" style={styles.appBar}>
         <Toolbar style={styles.toolBar}>
           <div className="menu-icon-container">
             <IconButton style={styles.iconButton} aria-label="menu" onClick={props.toggleMenuVisibility}>
@@ -64,7 +64,7 @@ const NavBar = (props) => {
                 </IconButton>
               </li>
               <li>
-                <IconButton style={styles.iconButton}  aria-label="login" onClick={props.handleLogin}>
+                <IconButton style={styles.iconButton}  aria-label="login" onClick={props.toggleLoginVisibility}>
                   <PersonIcon fontSize="inherit" />
                   <Typography style={styles.buttonText}>
                   Login

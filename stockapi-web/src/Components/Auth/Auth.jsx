@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import LoginForm from './LoginForm'
+import AuthTabs from './AuthTabs'
 import "./auth.css"
 
 export default class Auth extends Component {
@@ -17,6 +17,8 @@ export default class Auth extends Component {
     styles = {
         wrapperOn:{
             visibility: 'visible',
+            transitionDuration: '.4s',
+
         },
         overlayOn:{
             backgroundColor: 'rgba(0,41,60,0.75)',
@@ -28,6 +30,7 @@ export default class Auth extends Component {
         },
         wrapperOff:{
             visibility: 'hidden',
+            transitionDuration: '.4s',
         },
         overlayOff:{
             backgroundColor: 'rgba(0,41,60,0)',
@@ -36,13 +39,18 @@ export default class Auth extends Component {
         },
     }
 
+    handleOusideClick = (e) => {
+        if(e.target.className === "overlay-layer" || e.target.className === "auth-container" ){
+            this.props.toggleLoginVisibility()
+        }
+    }   
     render() {
         if(this.state.visible){
             return (
-                <div className="auth-wrapper" style={this.styles.wrapperOn}>
-                    <div className="overlay-layer" style={this.styles.overlayOn}>
+                <div className="auth-wrapper" style={this.styles.wrapperOn} >
+                    <div className="overlay-layer" style={this.styles.overlayOn} onClick={this.handleOusideClick}>
                         <div className="auth-container" style={this.styles.containerOn}>
-                                <LoginForm/>
+                            <AuthTabs/>
                         </div>
                     </div>
                 </div>
@@ -59,6 +67,5 @@ export default class Auth extends Component {
                 </div>
             )
         }
-
     }
 }

@@ -1,10 +1,25 @@
-import React, { Component } from 'react'
+import React from 'react'
 import TextField from '@material-ui/core/TextField'
+import Typography from '@material-ui/core/Typography';
+
 import { Button } from '@material-ui/core';
 import { makeStyles, withStyles } from '@material-ui/styles';
 import "./auth.css"
 
-const StyledButton = withStyles({
+const PrimaryButton = withStyles({
+    root: {
+        backgroundColor: '#2da7cb',
+        color: 'white',
+        marginTop: '24px',
+
+        '&:hover': {
+            backgroundColor: '#00789a',
+
+        },
+    },
+})(Button)
+
+const SecondaryButton = withStyles({
     root: {
         backgroundColor: '#2da7cb',
         color: 'white',
@@ -32,12 +47,12 @@ const StyledTextField = withStyles({
 
 const useStyles = makeStyles(theme => ({
     container: {
+      margin: 'auto',
       display: 'flex',
       flexDirection: 'column',
       flexWrap: 'wrap',
       width: '440px',
       height: '380px',
-      marginTop: '76px',
       justifyContent: 'center',
       alignItems: 'center',
       borderRadius: '5px',
@@ -66,22 +81,20 @@ export default function LoginForm() {
     }
     
     return (
-        <div className="form-container">
-            <form className={classes.container} onSubmit={handleSubmit} noValidate autoComplete="off">            
+        <form className={classes.container} onSubmit={handleSubmit} noValidate autoComplete="off">            
             <StyledTextField
-                    id="username"
-                    label="Username"
-                    value={values.username}
-                    onChange={handleChange('username')}
-                    type="text"
-                    className={classes.textField}
-                    InputLabelProps={{
-                    shrink: true,
-                    }}
-                    margin="normal"
-                    variant="filled"
+                id="username"
+                label="Username"
+                value={values.username}
+                onChange={handleChange('username')}
+                type="text"
+                className={classes.textField}
+                InputLabelProps={{
+                shrink: true,
+                }}          
+                margin="normal"
+                variant="filled"                                
             /> 
-           
             <StyledTextField
                 id="password"
                 label="Password"
@@ -95,10 +108,8 @@ export default function LoginForm() {
                 margin="normal"
                 variant="filled"
             />
-
-            <StyledButton>Sign in</StyledButton>
-            
-            </form>
-        </div>
+            {/* <SecondaryButton>Sign in</SecondaryButton> */}
+            <PrimaryButton>Sign in</PrimaryButton>
+        </form>
     )
 }
