@@ -8,6 +8,7 @@ import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import LoginForm from './LoginForm';
+import RegisterForm from './RegisterForm';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -48,7 +49,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function AuthTabs() {
+export default function AuthTabs(props) {
   const classes = useStyles();
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
@@ -82,10 +83,10 @@ export default function AuthTabs() {
         onChangeIndex={handleChangeIndex}
       >
         <TabPanel value={value} index={0} dir={theme.direction}>
-          <LoginForm/>
+          <LoginForm close={props.close} />
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}>
-          <LoginForm/>
+          <RegisterForm/>
         </TabPanel>
       </SwipeableViews>
     </div>

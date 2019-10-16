@@ -41,9 +41,13 @@ export default class Auth extends Component {
 
     handleOusideClick = (e) => {
         if(e.target.className === "overlay-layer" || e.target.className === "auth-container" ){
-            this.props.toggleLoginVisibility()
+            this.handleClose()
         }
     }   
+
+    handleClose = () => {
+        this.props.toggleLoginVisibility()
+    }
 
     render() {
         if(this.state.visible){
@@ -51,7 +55,7 @@ export default class Auth extends Component {
                 <div className="auth-wrapper" style={this.styles.wrapperOn} >
                     <div className="overlay-layer" style={this.styles.overlayOn} onClick={this.handleOusideClick}>
                         <div className="auth-container" style={this.styles.containerOn}>
-                            <AuthTabs/>
+                            <AuthTabs close={this.handleClose}/>
                         </div>
                     </div>
                 </div>

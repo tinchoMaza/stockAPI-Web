@@ -40,11 +40,13 @@ const useStyles = makeStyles(theme => ({
   }));
 
 
-export default function LoginForm(props) {
+export default function RegisterForm(props) {
     const classes = useStyles();
     const [values, setValues] = React.useState({
+        email: '',
         username: '',
         password: '',
+        confirmation: '',
       });
 
     const handleChange = name => event => {
@@ -64,6 +66,19 @@ export default function LoginForm(props) {
     return (
         <form className={classes.container} noValidate autoComplete="off">            
             <TextField
+                id="email"
+                label="email"
+                value={values.email}
+                onChange={handleChange('email')}
+                type="email"
+                className={classes.textField}
+                InputLabelProps={{
+                shrink: true,
+                }}          
+                margin="normal"
+                variant="filled"                
+            />            
+            <TextField
                 id="username"
                 label="Username"
                 value={values.username}
@@ -81,6 +96,19 @@ export default function LoginForm(props) {
                 label="Password"
                 value={values.password}
                 onChange={handleChange('password')}
+                type="password"
+                className={classes.textField}
+                InputLabelProps={{
+                shrink: true,
+                }}
+                margin="normal"
+                variant="filled"
+            />
+            <TextField
+                id="confirmation"
+                label="confirmation"
+                value={values.confirmation}
+                onChange={handleChange('confirmation')}
                 type="password"
                 className={classes.textField}
                 InputLabelProps={{
