@@ -5,6 +5,7 @@ import { makeStyles } from '@material-ui/styles';
 import "./auth.css"
 
 const useStyles = makeStyles(theme => ({
+
     primaryBtn: {
         margin: theme.spacing(3),
         color: theme.palette.common.white,
@@ -19,13 +20,10 @@ const useStyles = makeStyles(theme => ({
       margin: 'auto',
       flexWrap: 'wrap',
       width: '400px',
-      height: '380px',
       justifyContent: 'center',
       alignItems: 'center',
       borderRadius: '15px',
       display: 'contents',
-      transition: '.4s',
-
     },
     textField: {
       width: 300,
@@ -68,7 +66,7 @@ export default function RegisterForm(props) {
         <form className={classes.container} noValidate autoComplete="off">            
             <TextField
                 id="email"
-                label="email"
+                label="Email"
                 value={values.email}
                 onChange={handleChange('email')}
                 type="email"
@@ -107,7 +105,7 @@ export default function RegisterForm(props) {
             />
             <TextField
                 id="confirmation"
-                label="confirmation"
+                label="Confirm Password"
                 value={values.confirmation}
                 onChange={handleChange('confirmation')}
                 type="password"

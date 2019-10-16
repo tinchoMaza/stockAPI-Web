@@ -49,6 +49,18 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
+var loginStyle = {
+  overflowY: 'hidden',
+  height:'300px',
+  transition: 'height .4s'
+}
+
+var registerStyle = {
+  overflowY: 'hidden',
+  height:'440px',
+  transition: 'height .4s'
+}
+
 export default function AuthTabs(props) {
   const classes = useStyles();
   const theme = useTheme();
@@ -81,6 +93,7 @@ export default function AuthTabs(props) {
         axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
         index={value}
         onChangeIndex={handleChangeIndex}
+        style = { !value ? loginStyle : registerStyle }
       >
         <TabPanel value={value} index={0} dir={theme.direction}>
           <LoginForm close={props.close} />

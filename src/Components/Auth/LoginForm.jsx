@@ -17,11 +17,12 @@ const useStyles = makeStyles(theme => ({
       
     container: {
       margin: 'auto',
+      paddingTop: '0px',
       display: 'flex',
       flexDirection: 'column',
       flexWrap: 'wrap',
       width: '400px',
-      height: '300px',
+      height: '280px',
       justifyContent: 'center',
       alignItems: 'center',
       borderRadius: '15px',
