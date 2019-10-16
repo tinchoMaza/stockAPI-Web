@@ -17,14 +17,15 @@ const useStyles = makeStyles(theme => ({
       
     container: {
       margin: 'auto',
-      display: 'flex',
-      flexDirection: 'column',
       flexWrap: 'wrap',
-      width: '440px',
+      width: '400px',
       height: '380px',
       justifyContent: 'center',
       alignItems: 'center',
-      borderRadius: '5px',
+      borderRadius: '15px',
+      display: 'contents',
+      transition: '.4s',
+
     },
     textField: {
       width: 300,

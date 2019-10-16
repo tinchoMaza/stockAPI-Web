@@ -86,7 +86,7 @@ export default function AuthTabs(props) {
           <LoginForm close={props.close} />
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}>
-          <RegisterForm/>
+          <RegisterForm close={props.close}/>
         </TabPanel>
       </SwipeableViews>
     </div>
