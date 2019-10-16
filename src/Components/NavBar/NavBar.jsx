@@ -7,66 +7,43 @@ import MenuIcon from 'mdi-react/MenuIcon';
 import SearchIcon from '@material-ui/icons/Search';
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
 import PersonIcon from '@material-ui/icons/Person';
+import { makeStyles } from '@material-ui/core/styles';
 
-import './navBar.css';
+export default function NavBar(props){
+  const classes = useStyles();
 
-const styles = {
-    appBar:{
-        width: '100%',
-        // background: '#222222',
-        color: 'white',
-        position: 'absolute',
-        top: 0,
-    },
-    toolBar:{
-        color: '#2DA7CB',
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-    },
-    iconButton:{
-      edge: 'start', 
-      color: 'inherit',
-      fontSize: 'inherit' ,
-    },
-    buttonText:{
-      padding:'10px'
-    }
-}
-
-const NavBar = (props) => {
   return (
-    <div className="nav-bar-container">
-      <AppBar position="static" color="secondary" style={styles.appBar}>
-        <Toolbar style={styles.toolBar}>
-          <div className="menu-icon-container">
-            <IconButton style={styles.iconButton} aria-label="menu" onClick={props.toggleMenuVisibility}>
-              <MenuIcon fontSize="inherit" />
+    <div className={classes.container}>
+      <AppBar position="static" color="secondary" className={classes.appBar}>
+        <Toolbar className={classes.toolBar}>
+          <div className={classes.iconsLeft}>
+            <IconButton className={classes.iconButton} aria-label="menu" onClick={props.toggleMenuVisibility}>
+              <MenuIcon/>
             </IconButton>
           </div>
-          <div className="logo">
+          <div className={classes.logo}>
             <Typography variant="h8" >
               <p><a href="https://knowyourmeme.com/memes/stonks">
                 Stönks App
               </a></p>
             </Typography>
           </div>
-          <div className="top-right-icons-container">
+          <div className={classes.iconsRight}>
             <ul>
               <li>
-                <IconButton style={styles.iconButton} aria-label="search">
-                  <SearchIcon fontSize="inherit" />
+                <IconButton className={classes.iconButton} aria-label="search">
+                  <SearchIcon/>
                 </IconButton>
               </li>
               <li>
-                <IconButton style={styles.iconButton}  aria-label="help">
-                  <HelpOutlineIcon fontSize="inherit"  />
+                <IconButton className={classes.iconButton}  aria-label="help">
+                  <HelpOutlineIcon/>
                 </IconButton>
               </li>
               <li>
-                <IconButton style={styles.iconButton}  aria-label="login" onClick={props.toggleLoginVisibility}>
-                  <PersonIcon fontSize="inherit" />
-                  <Typography style={styles.buttonText}>
+                <IconButton className={classes.iconButton}  aria-label="login" onClick={props.toggleLoginVisibility}>
+                  <PersonIcon/>
+                  <Typography className={classes.buttonText}>
                   Login
                   </Typography>
                 </IconButton>
@@ -79,4 +56,61 @@ const NavBar = (props) => {
   );
 }
 
-export default NavBar
+const useStyles = makeStyles({
+
+  container: {
+    minHeight: '64px',
+    width: '100%',
+  },
+
+  logo: {
+    transform: 'translateX(-50%)',
+    left: '50%',
+    position: 'absolute',
+    '& a' :{
+      alignItems: 'center',
+      color: 'inherit',
+      textDecoration: 'none',
+      transition: '0.25s' ,
+      fontSize: '24px',
+    },
+    '& p:hover' :{
+      textShadow: " 0 0 1px #fff, 0 0 2px #fff, 0 0 3px #fff, 0 0 4px #2da7cb, 0 0 7px #2da7cb, 0 0 8px #2da7cb, 0 0 10px #2da7cb, 0 0 15px #2da7cb",
+      color: 'white',
+    },
+  },
+
+  iconsRight :{
+    '& li' :{
+      display: 'inline-block',
+      listStyle: 'none',
+    },
+    fontSize: '24px',
+  },
+
+  iconsLeft :{
+    fontSize: '24px',
+  },
+  
+  appBar:{
+    width: '100%',
+    height: '60px',
+    color: 'white',
+    position: 'absolute',
+    top: 0,
+  },
+  toolBar:{
+    color: '#2DA7CB',
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  iconButton:{
+    edge: 'start', 
+    color: 'inherit',
+    fontSize: 'inherit' ,
+  },
+  buttonText:{
+    padding:'10px'
+  }
+});
