@@ -44,9 +44,14 @@ const useStyles = makeStyles(theme => ({
   root: {
     backgroundColor: theme.palette.background.paper,
     width: 500,
-    borderRadius: '5px',
+    borderRadius: '15px',
     marginTop: '80px',
+    '& .MuiPaper-root': {
+      borderRadius: '15px 15px 0 0',
+    },
   },
+
+
 }));
 
 var loginStyle = {

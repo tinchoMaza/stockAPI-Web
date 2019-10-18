@@ -71,7 +71,7 @@ const useStyles = makeStyles({
       alignItems: 'center',
       color: 'inherit',
       textDecoration: 'none',
-      transition: '0.25s' ,
+      transition: '1.2s ease-out' ,
       fontSize: '24px',
     },
     '& p:hover' :{
