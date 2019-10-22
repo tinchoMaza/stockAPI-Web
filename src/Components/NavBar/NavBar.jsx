@@ -8,6 +8,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
 import PersonIcon from '@material-ui/icons/Person';
 import { makeStyles } from '@material-ui/core/styles';
+import { Link } from "react-router-dom";
 
 export default function NavBar(props){
   const classes = useStyles();
@@ -22,11 +23,11 @@ export default function NavBar(props){
             </IconButton>
           </div>
           <div className={classes.logo}>
-            <Typography variant="h8" >
-              <p><a href="https://knowyourmeme.com/memes/stonks">
-                Stönks App
-              </a></p>
-            </Typography>
+            <Link to='/'>
+              <Typography variant="h8" >
+                <p><a>Stöck App</a></p>
+              </Typography>
+            </Link>
           </div>
           <div className={classes.iconsRight}>
             <ul>
@@ -35,11 +36,13 @@ export default function NavBar(props){
                   <SearchIcon/>
                 </IconButton>
               </li>
+              <Link to='/help'>
               <li>
                 <IconButton className={classes.iconButton}  aria-label="help">
                   <HelpOutlineIcon/>
                 </IconButton>
               </li>
+              </Link>
               <li>
                 <IconButton className={classes.iconButton}  aria-label="login" onClick={props.toggleLoginVisibility}>
                   <PersonIcon/>
@@ -56,7 +59,7 @@ export default function NavBar(props){
   );
 }
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
 
   container: {
     minHeight: '64px',
@@ -71,7 +74,7 @@ const useStyles = makeStyles({
       alignItems: 'center',
       color: 'inherit',
       textDecoration: 'none',
-      transition: '1.2s ease-out' ,
+      transition: '0.4s ease-out' ,
       fontSize: '24px',
     },
     '& p:hover' :{
@@ -84,6 +87,9 @@ const useStyles = makeStyles({
     '& li' :{
       display: 'inline-block',
       listStyle: 'none',
+      '& button':{
+        color: theme.palette.primary.main,
+      },
     },
     fontSize: '24px',
   },
@@ -112,5 +118,5 @@ const useStyles = makeStyles({
   },
   buttonText:{
     padding:'10px'
-  }
-});
+  },
+}))
