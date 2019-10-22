@@ -8,7 +8,7 @@ export default class Body extends Component {
         return (
         <div className="body-wrapper">
             <SideBar visible={this.props.menuIsVisible}/>
-            <MainContainer/>
+            <MainContainer isCompressed={this.props.menuIsVisible}/>
             <Auth visible={this.props.loginIsVisible} toggleLoginVisibility={this.props.toggleLoginVisibility}/>
         </div>
         )
