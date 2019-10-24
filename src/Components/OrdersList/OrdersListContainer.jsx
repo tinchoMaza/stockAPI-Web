@@ -47,7 +47,7 @@ export function OrdersList(props) {
 
 export function OrderItem(props){
   const classes = useStyles();
-
+  var date = timeConverter(props.content.departure_date.$date.$numberLong/1000)
   return (
     <div className={classes.root}>
       <Paper className={classes.paper}>
@@ -56,15 +56,35 @@ export function OrderItem(props){
                   <Avatar alt="Cindy Baker" src="https://m.media-amazon.com/images/M/MV5BMTQ1NTQwMTYxNl5BMl5BanBnXkFtZTYwMjA1MzY1._V1_UX214_CR0,0,214,317_AL_.jpg" />
                 </Grid>
                 <Grid item xs zeroMinWidth>
-                <Typography noWrap>{props.content._id.$oid}</Typography>
+                  <Typography noWrap>{props.content._id.$oid}</Typography>
                 </Grid>
                 <Grid item xs zeroMinWidth>
-                <Typography noWrap>{props.content.status}</Typography>
+                  <Typography noWrap>{props.content.id_employee.$oid}</Typography>
+                </Grid>
+                <Grid item xs zeroMinWidth>
+                  <Typography noWrap>{props.content.status}</Typography>
+                </Grid>
+                <Grid item xs zeroMinWidth>
+                  <Typography noWrap>{date}</Typography>
                 </Grid>
             </Grid>
         </Paper>
     </div>
   )
+}
+
+
+function timeConverter(UNIX_timestamp){
+  var a = new Date(UNIX_timestamp * 1000);
+  var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  var year = a.getFullYear();
+  var month = months[a.getMonth()];
+  var date = a.getDate();
+  var hour = a.getHours();
+  var min = a.getMinutes();
+  var sec = a.getSeconds();
+  var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec ;
+  return time;
 }
 
 const mockOrdersList = [
