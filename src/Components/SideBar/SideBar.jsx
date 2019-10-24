@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from "react-router-dom"
 
 const style = (width) => { 
     return {
@@ -38,7 +39,7 @@ export default class SideBar extends Component {
     render() {
         return (
             <div className="side-bar" style={this.state.style}>
-                {this.state.visible?<p>something something</p>:null}
+                {this.state.visible?<Link to='/orders'>Orders List</Link>:null}
             </div>
         )
     }

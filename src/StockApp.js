@@ -2,11 +2,9 @@ import React, { Component } from 'react'
 import NavBar from './Components/NavBar/NavBar'
 import Body from './Components/Body/Body'
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core'
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-} from "react-router-dom";
+import SideBar from './Components/SideBar/SideBar'
+import { BrowserRouter as Router } from "react-router-dom";
+
 import './StockApp.css';
 
 const theme = createMuiTheme({
@@ -35,7 +33,6 @@ export default class StockApp extends Component {
 
 toggleMenuVisibility() {
   this.setState({menuIsVisible : !this.state.menuIsVisible})
-  console.log(this.state.menuIsVisible)
 }
 
 toggleLoginVisibility() {
@@ -53,22 +50,15 @@ toggleLoginVisibility() {
                 toggleLoginVisibility={this.toggleLoginVisibility} 
               />
             </header>
-            <Switch>
-              <Route path="/" exact>
-                <Body 
-                  menuIsVisible={this.state.menuIsVisible}
-                  loginIsVisible={this.state.loginIsVisible}
-                  toggleLoginVisibility={this.toggleLoginVisibility} 
-                />
-              </Route>
-              <Route path="/help">
-                <p>Halp please</p>
-              </Route>
-            </Switch>
+            <SideBar visible={this.state.menuIsVisible}/>
+            <Body 
+              menuIsVisible={this.state.menuIsVisible}
+              loginIsVisible={this.state.loginIsVisible}
+              toggleLoginVisibility={this.toggleLoginVisibility} 
+            />
           </div>
-        </MuiThemeProvider>
+        </MuiThemeProvider>    
       </Router>
-      
     )
   }
 }

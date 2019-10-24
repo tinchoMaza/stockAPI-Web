@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
-import ProductsGrid from "../ProductsGrid/ProductsGrid";
-
+import ProductsGrid from "../ProductsGrid/ProductsGrid"
+import Home from '../Home/Home'
+import { Switch, Route } from "react-router-dom"
+import OrdersListContainer from '../OrdersList/OrdersListContainer'
+  
 const style = (mainContainerStyle) => { 
     return {
         mainContainer: mainContainerStyle,
@@ -22,7 +25,7 @@ const expandedStyle = {
 
 const compressedStyle = {
     overflow: 'scroll',
-    width: 'calc(100%-300px)',
+    width: '-webkit-fill-available',
     marginTop: '15px',
     marginLeft: '300px',
     transition: '.4s'
@@ -41,7 +44,6 @@ export default class MainContainer extends Component {
 
     componentWillReceiveProps(nextProps) {
         if(nextProps.isCompressed) {
-            // debugger
             this.setState({ 
                 isCompressed: nextProps.isCompressed,             
                 styles : style(compressedStyle)
@@ -58,10 +60,24 @@ export default class MainContainer extends Component {
     render() {
         return (
             <div style={this.state.styles.mainContainer}>
-                <div >
-                    <p style={this.state.styles.sortingSelection} >Ordenar por:  Fecha ▼ </p>
-                </div>
-                <ProductsGrid/>
+                <Switch>
+                    <Route path="/" exact>
+                        <Home style={{width:'100%'}}/>
+                    </Route>
+                    <Route path="/help">
+                        <p>Halp please</p>
+                    </Route>
+                    <Route path="/orders">
+                        <OrdersListContainer/>
+                    </Route>
+                    <Route path="/shop">
+                        <div >
+                            <p style={this.state.styles.sortingSelection} >Ordenar por:  Fecha ▼ </p>
+                        </div>
+                        <ProductsGrid/>
+                    </Route>
+                </Switch>
+
             </div>
         )
     }

@@ -1,17 +1,17 @@
-import React from 'react';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from 'mdi-react/MenuIcon';
-import SearchIcon from '@material-ui/icons/Search';
-import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
-import PersonIcon from '@material-ui/icons/Person';
-import { makeStyles } from '@material-ui/core/styles';
-import { Link } from "react-router-dom";
+import React from 'react'
+import AppBar from '@material-ui/core/AppBar'
+import Toolbar from '@material-ui/core/Toolbar'
+import Typography from '@material-ui/core/Typography'
+import IconButton from '@material-ui/core/IconButton'
+import MenuIcon from 'mdi-react/MenuIcon'
+import SearchIcon from '@material-ui/icons/Search'
+import HelpOutlineIcon from '@material-ui/icons/HelpOutline'
+import PersonIcon from '@material-ui/icons/Person'
+import { makeStyles } from '@material-ui/core/styles'
+import { Link } from "react-router-dom"
 
 export default function NavBar(props){
-  const classes = useStyles();
+  const classes = useStyles()
 
   return (
     <div className={classes.container}>
