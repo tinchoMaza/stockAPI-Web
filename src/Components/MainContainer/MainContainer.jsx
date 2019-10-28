@@ -71,10 +71,12 @@ export default class MainContainer extends Component {
                         <OrdersListContainer/>
                     </Route>
                     <Route path="/shop">
-                        <div >
-                            <p style={this.state.styles.sortingSelection} >Ordenar por:  Fecha ▼ </p>
-                        </div>
-                        <ProductsGrid/>
+                        <>
+                            <div >
+                                <p style={this.state.styles.sortingSelection} >Ordenar por:  Fecha ▼ </p>
+                            </div>
+                            <ProductsGrid/>
+                        </>
                     </Route>
                 </Switch>
 

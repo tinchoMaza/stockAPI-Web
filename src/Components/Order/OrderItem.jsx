@@ -20,7 +20,6 @@ const useStyles = makeStyles(theme => ({
       minWidth: '600px',
       margin: `${theme.spacing(1)}px auto`,
       padding: theme.spacing(2),
-
     },
     container: {
       flexDirection: 'row',
