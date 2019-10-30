@@ -17,6 +17,7 @@ const theme = createMuiTheme({
     },
     lightblue: {
       main: '#EEF8FA',
+      hover: '#c8e9f9',
     },
   },
 })
