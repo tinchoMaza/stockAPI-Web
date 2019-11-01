@@ -7,19 +7,32 @@ export default class OrderItemContainer extends Component {
         this.state = {
             opened: false,
         }
-        this.toggleOpen = this.toggleOpen.bind(this)
+        this.openOrder = this.openOrder.bind(this)
+        this.closeOrder = this.closeOrder.bind(this)
     }
 
-    toggleOpen = () => {
+    openOrder = () => {
         this.setState({
-            opened: !this.state.opened,
+            opened: true,
+        })
+    }
+
+    closeOrder = () => {
+        this.setState({
+            opened: false,
         })
     }
     
     render() {
         return (
             <div>
-                <OrderItem content={this.props.content} items={this.props.items} opened={this.state.opened} toggleOpen={this.toggleOpen}/>
+                <OrderItem 
+                    content={this.props.content} 
+                    items={this.props.items} 
+                    opened={this.state.opened} 
+                    open={this.openOrder} 
+                    close={this.closeOrder}
+                />
             </div>
         )
     }
