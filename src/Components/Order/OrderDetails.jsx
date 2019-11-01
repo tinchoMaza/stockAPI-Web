@@ -9,6 +9,37 @@ import IconButton from '@material-ui/core/IconButton'
 import { makeStyles } from '@material-ui/core/styles'
 import { hexToRgba } from '../../utils/styling'
 
+export default function OrderDetails(props) {
+    const classes = useStyles(props)
+    return (
+        <>
+            <IconButton className={classes.iconButton} aria-label="close" onClick={props.close}>
+                <CloseIcon/>
+            </IconButton>
+            <div className={classes.actionButtonsContainer}>
+                <Button variant="contained" className={classes.acceptButton}>Accept</Button>
+                <Button variant="contained" className={classes.declineButton}>Decline</Button>
+            </div>
+            <ul>
+                <Grid className={classes.topContainer} container >
+                    <Grid className={classes.dataGroup} container justify={'flex-start'}>
+                        <Avatar alt="Cindy Baker" src="https://m.media-amazon.com/images/M/MV5BMTQ1NTQwMTYxNl5BMl5BanBnXkFtZTYwMjA1MzY1._V1_UX214_CR0,0,214,317_AL_.jpg" />
+                        <OrderDataColumn>{[props.content._id.$oid,props.content.id_employee.$oid]}</OrderDataColumn>
+                    </Grid>
+                </Grid>  
+                <Grid className={classes.productsList} container >
+                    {props.content.orderedProducts.map(product => (
+                        <li key={product._id}>
+                            <ProductContainer content={product}/>
+                        </li>
+                    ))}
+                </Grid>  
+            </ul>
+        </>
+    )
+}
+      
+
 const useStyles = makeStyles(theme => ({
     topContainer: {
         flexDirection: 'row',
@@ -49,7 +80,7 @@ const useStyles = makeStyles(theme => ({
             fontWeight: 500,
             backgroundColor: hexToRgba(theme.palette.action.accept.main,theme.palette.action.hoverOpacity),
         }
-      },
+        },
     declineButton: {
         backgroundColor: theme.palette.action.decline.main,
         color: theme.palette.common.white,
@@ -58,7 +89,7 @@ const useStyles = makeStyles(theme => ({
             fontWeight: 500,
             backgroundColor: hexToRgba(theme.palette.action.decline.main,theme.palette.action.hoverOpacity),
         }
-      },
+        },
     productsList: {
         flexDirection: 'column',
         flexWrap: 'nowrap',
@@ -80,38 +111,6 @@ const useStyles = makeStyles(theme => ({
         },
     },
     dataGroup:{
-      alignItems: 'center',
+        alignItems: 'center',
     }
-  }));
-
-export default function OrderDetails(props) {
-        const classes = useStyles(props)
-        return (
-            <>
-                <IconButton className={classes.iconButton} aria-label="close" onClick={props.close}>
-                    <CloseIcon/>
-                </IconButton>
-                <div className={classes.actionButtonsContainer}>
-                    <Button variant="contained" className={classes.acceptButton}>Accept</Button>
-                    <Button variant="contained" className={classes.declineButton}>Decline</Button>
-                </div>
-                <ul>
-                    <Grid className={classes.topContainer} container >
-                        <Grid className={classes.dataGroup} container justify={'flex-start'}>
-                            <Avatar alt="Cindy Baker" src="https://m.media-amazon.com/images/M/MV5BMTQ1NTQwMTYxNl5BMl5BanBnXkFtZTYwMjA1MzY1._V1_UX214_CR0,0,214,317_AL_.jpg" />
-                            <OrderDataColumn>{[props.content._id.$oid,props.content.id_employee.$oid]}</OrderDataColumn>
-                        </Grid>
-                    </Grid>  
-                    <Grid className={classes.productsList} container >
-                        {props.content.orderedProducts.map(product => (
-                            <li key={product._id}>
-                                <ProductContainer content={product}/>
-                            </li>
-                        ))}
-                    </Grid>  
-
-                </ul>
-            </>
-        )
-      }
-      
+}));

@@ -27,7 +27,7 @@ const compressedStyle = {
     overflow: 'scroll',
     width: '-webkit-fill-available',
     marginTop: '15px',
-    marginLeft: '300px',
+    marginLeft: '200px',
     transition: '.4s'
 
 }
@@ -70,7 +70,7 @@ export default class MainContainer extends Component {
                     <Route path="/orders">
                         <OrdersListContainer/>
                     </Route>
-                    <Route path="/shop">
+                    <Route path="/store">
                         <>
                             <div >
                                 <p style={this.state.styles.sortingSelection} >Ordenar por:  Fecha ▼ </p>

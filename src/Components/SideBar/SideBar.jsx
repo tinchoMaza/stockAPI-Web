@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { Link } from "react-router-dom"
+import SideBarLinksContainer from './SideBarLinksContainer'
+import {withRouter} from 'react-router-dom';
 
 const style = (width) => { 
     return {
@@ -11,12 +12,13 @@ const style = (width) => {
     }
 }
 
-export default class SideBar extends Component {
+
+class SideBar extends Component {
     constructor(props) {
         super(props)
         this.state = { 
             visible: true,
-            style: style('300px')
+            style: style('200px')
         }
     }
     
@@ -24,7 +26,7 @@ export default class SideBar extends Component {
         if(nextProps.visible){
             this.setState({ 
                 visible: nextProps.visible,
-                style: style('300px')
+                style: style('200px')
             });  
         }
         else {
@@ -39,8 +41,10 @@ export default class SideBar extends Component {
     render() {
         return (
             <div className="side-bar" style={this.state.style}>
-                {this.state.visible?<Link to='/orders'>Orders List</Link>:null}
+                { this.state.visible && <SideBarLinksContainer active={this.props.location.pathname}/> }
             </div>
         )
     }
 }
+
+export default withRouter(props => <SideBar {...props}/>);
