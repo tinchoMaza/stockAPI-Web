@@ -3,10 +3,22 @@ import Paper from '@material-ui/core/Paper'
 import OrderAbridged from './OrderAbridged'
 import OrderDetails from './OrderDetails'
 import { makeStyles } from '@material-ui/core/styles'
+import { hexToRgba } from '../../utils/styling'
+
+export default function OrderItem(props){
+    const classes = useStyles(props)
+    return (
+      <div className={classes.root} >
+        <Paper className={classes.paper} onClick={ props.opened? null : props.open } >
+        { props.opened ? <OrderDetails content={props.content} close={props.close} /> : <OrderAbridged content={props.content} />}
+        </Paper>
+      </div>
+    )
+  }
 
 const useStyles = makeStyles(theme => ({
     root: props => ({
-      height: props.opened ? (props.items < 15 ? 116+75.99*props.items : 100+30*props.items ) : 100,
+      height: props.opened ? (props.items < 15 ? 116+77*props.items : 100+30*props.items ) : 100,
       margin: `${theme.spacing(1)}px auto`,
       display: 'flex',
       alignItems: 'center',
@@ -32,21 +44,9 @@ const useStyles = makeStyles(theme => ({
       cursor: props.opened ? null : 'pointer',
       '&:hover' : {
         transition: '.4s ease',
-        backgroundColor: props.opened ? theme.palette.background.paper : theme.palette.action.hover,
+        backgroundColor: props.opened ? theme.palette.background.paper : hexToRgba(theme.palette.lightblue.hover,.4),
       },
     }),
   })
 )
-
-export default function OrderItem(props){
-    const classes = useStyles(props)
-    return (
-      <div className={classes.root} >
-        <Paper className={classes.paper} onClick={ props.opened? null : props.open } >
-        { props.opened ? <OrderDetails content={props.content} close={props.close} /> : <OrderAbridged content={props.content} />}
-        </Paper>
-      </div>
-    )
-  }
-  
   

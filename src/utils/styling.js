@@ -1,6 +1,4 @@
 export const hexToRgba = (hex,a) => { 
-    console.log(hex,a)
-    // debugger
     if (hex.length > 7) return
     var rHex = hex.slice(1, 3)
     var gHex = hex.slice(3, 5)

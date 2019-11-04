@@ -62,7 +62,7 @@ export default function NavBar(props){
 const useStyles = makeStyles(theme => ({
 
   container: {
-    minHeight: '64px',
+    minHeight: '60px',
     width: '100%',
   },
 

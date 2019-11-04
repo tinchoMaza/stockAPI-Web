@@ -19,36 +19,46 @@ export default function SideBarLinks(props) {
         <div >
             <List className={classes.links}>
                 <Link to='/store'>
-                    <ListItem button key='Store' className={classes.storeLink}>
-                        <ListItemIcon><StoreMallDirectoryRoundedIcon /></ListItemIcon>
-                        <ListItemText primary='Store' />
-                    </ListItem>
+                    <div className={classes.separation}>
+                        <ListItem button key='Store' className={classes.storeLink}>
+                            <ListItemIcon><StoreMallDirectoryRoundedIcon /></ListItemIcon>
+                            <ListItemText primary='Store' />
+                        </ListItem>
+                    </div>
                 </Link>                        
                 <Link to='/orders'>
-                    <ListItem button key='Orders' className={classes.ordersLink}>
-                        <ListItemIcon><FormatListBulletedRoundedIcon /></ListItemIcon>
-                        <ListItemText primary='Orders' />
-                    </ListItem>
+                    <div className={classes.separation}>
+                        <ListItem button key='Orders' className={classes.ordersLink}>
+                            <ListItemIcon><FormatListBulletedRoundedIcon /></ListItemIcon>
+                            <ListItemText primary='Orders' />
+                        </ListItem>
+                    </div>
                 </Link>                        
                 <Link to='/cart'>
-                    <ListItem button key='Cart' className={classes.cartLink}>
-                        <ListItemIcon><ShoppingCartRoundedIcon /></ListItemIcon>
-                        <ListItemText primary='Cart' />
-                    </ListItem>
+                    <div className={classes.separation}>
+                        <ListItem button key='Cart' className={classes.cartLink}>
+                            <ListItemIcon><ShoppingCartRoundedIcon /></ListItemIcon>
+                            <ListItemText primary='Cart' />
+                        </ListItem>
+                    </div>
                 </Link>                  
                 <Link to='/favorites'>
-                    <ListItem button key='Favorites'className={classes.favoritesLink}>
-                        <ListItemIcon><FavoriteRoundedIcon /></ListItemIcon>
-                        <ListItemText primary='Favorites' />
-                    </ListItem>
+                    <div className={classes.separation}>
+                        <ListItem button key='Favorites'className={classes.favoritesLink}>
+                            <ListItemIcon><FavoriteRoundedIcon /></ListItemIcon>
+                            <ListItemText primary='Favorites' />
+                        </ListItem>
+                    </div>
                 </Link>        
                 <Divider />
 
                 <Link to='/settings'>
-                    <ListItem button key='Settings' className={classes.settingsLink}>
-                        <ListItemIcon><SettingsRoundedIcon /></ListItemIcon>
-                        <ListItemText primary='Settings' />
-                    </ListItem>
+                    <div className={classes.separation}>
+                        <ListItem button key='Settings' className={classes.settingsLink}>
+                            <ListItemIcon><SettingsRoundedIcon /></ListItemIcon>
+                            <ListItemText primary='Settings' />
+                        </ListItem>
+                    </div>
                 </Link>
             </List>
         </div>
@@ -62,50 +72,103 @@ const useStyles = makeStyles(theme => ({
             textDecoration: 'none',
         },
     },
+    separation: {
+        margin: theme.spacing(1),
+    },
     storeLink : props => ({
+        padding: theme.spacing(.5,1),
+        borderRadius: '5px',
         color: props.active === '/store' ? theme.palette.primary.contrastText : theme.palette.grey[700], 
         backgroundColor: props.active === '/store' ? theme.palette.primary.light : null, 
         '&:hover' :{
-            backgroundColor: theme.palette.primary.light,
+            backgroundColor: props.active === '/store' ? theme.palette.primary.light : theme.palette.grey[400],
             opacity: props.active === '/store' ? 0.8 : 1,
             transition: '.3s',
-        }
+        },
+        '& svg':{
+            color: props.active === '/store' ? theme.palette.primary.contrastText : theme.palette.grey[700],             
+            '&:hover' :{
+                backgroundColor: props.active === '/store' ? theme.palette.primary.light : theme.palette.grey[400],
+                opacity: props.active === '/store' ? 0.8 : 1,
+                transition: '.3s',
+            },
+       },
     }),
     ordersLink : props => ({
+        padding: theme.spacing(.5,1),
+        borderRadius: '5px',
         color: props.active === '/orders' ? theme.palette.primary.contrastText : theme.palette.grey[700], 
         backgroundColor: props.active === '/orders' ? theme.palette.primary.light : null, 
         '&:hover' :{
-            backgroundColor: theme.palette.primary.light,
+            backgroundColor: props.active === '/orders' ? theme.palette.primary.light : theme.palette.grey[400],
             opacity: props.active === '/orders' ? 0.8 : 1,
             transition: '.3s',
-        }
+        },
+        '& svg':{
+            color: props.active === '/orders' ? theme.palette.primary.contrastText : theme.palette.grey[700],             
+            '&:hover' :{
+                backgroundColor: props.active === '/orders' ? theme.palette.primary.light : theme.palette.grey[400],
+                opacity: props.active === '/orders' ? 0.8 : 1,
+                transition: '.3s',
+            },
+       },
     }),
     cartLink : props => ({
+        padding: theme.spacing(.5,1),
+        borderRadius: '5px',
         color: props.active === '/cart' ? theme.palette.primary.contrastText : theme.palette.grey[700], 
         backgroundColor: props.active === '/cart' ? theme.palette.primary.light : null, 
         '&:hover' :{
-            backgroundColor: theme.palette.primary.light,
+            backgroundColor: props.active === '/cart' ? theme.palette.primary.light : theme.palette.grey[400],
             opacity: props.active === '/cart' ? 0.8 : 1,
             transition: '.3s',
-        }
+        },
+        '& svg':{
+            color: props.active === '/cart' ? theme.palette.primary.contrastText : theme.palette.grey[700],             
+            '&:hover' :{
+                backgroundColor: props.active === '/cart' ? theme.palette.primary.light : theme.palette.grey[400],
+                opacity: props.active === '/cart' ? 0.8 : 1,
+                transition: '.3s',
+            },
+       },
     }),
     favoritesLink : props => ({
+        padding: theme.spacing(.5,1),
+        borderRadius: '5px',
         color: props.active === '/favorites' ? theme.palette.primary.contrastText : theme.palette.grey[700], 
         backgroundColor: props.active === '/favorites' ? theme.palette.primary.light : null, 
         '&:hover' :{
-            backgroundColor: theme.palette.primary.light,
+            backgroundColor: props.active === '/favorites' ? theme.palette.primary.light : theme.palette.grey[400],
             opacity: props.active === '/favorites' ? 0.8 : 1,
             transition: '.3s',
-        }
+        },
+        '& svg':{
+            color: props.active === '/favorites' ? theme.palette.primary.contrastText : theme.palette.grey[700],             
+            '&:hover' :{
+                backgroundColor: props.active === '/favorites' ? theme.palette.primary.light : theme.palette.grey[400],
+                opacity: props.active === '/favorites' ? 0.8 : 1,
+                transition: '.3s',
+            },
+       },
     }),
     settingsLink : props => ({
+        padding: theme.spacing(.5,1),
+        borderRadius: '5px',
         color: props.active === '/settings' ? theme.palette.primary.contrastText : theme.palette.grey[700], 
         backgroundColor: props.active === '/settings' ? theme.palette.primary.light : null, 
         '&:hover' :{
-            backgroundColor: theme.palette.primary.light,
+            backgroundColor: props.active === '/settings' ? theme.palette.primary.light : theme.palette.grey[400],
             opacity: props.active === '/settings' ? 0.8 : 1,
             transition: '.3s',
-        }
+        },
+        '& svg':{
+            color: props.active === '/settings' ? theme.palette.primary.contrastText : theme.palette.grey[700],             
+            '&:hover' :{
+                backgroundColor: props.active === '/settings' ? theme.palette.primary.light : theme.palette.grey[400],
+                opacity: props.active === '/settings' ? 0.8 : 1,
+                transition: '.3s',
+            },
+       },
     }),
     
     

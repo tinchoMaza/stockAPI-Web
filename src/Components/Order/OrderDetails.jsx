@@ -49,6 +49,7 @@ const useStyles = makeStyles(theme => ({
         justifyContent: 'space-between',
         width: '100%',
         height: '100px',
+        borderBottom: `1px ${theme.palette.grey[200]} solid`,
     },
     iconButton: {
         position: 'absolute',
@@ -101,8 +102,9 @@ const useStyles = makeStyles(theme => ({
             paddingLeft: theme.spacing(2),
             color: theme.palette.primary.dark,
             listStyle: 'none',
+            borderBottom: `1px ${theme.palette.grey[200]} solid`,
             '&:nth-child(odd)': {
-                background: `linear-gradient(90deg,${theme.palette.background.paper} 0%, ${theme.palette.background.paper} 10%, ${theme.palette.lightblue.main} 40%,  ${theme.palette.lightblue.main} 50%,  ${theme.palette.lightblue.main} 60%, ${theme.palette.background.paper} 90%,  ${theme.palette.background.paper} 100%)`,
+                // background: `linear-gradient(90deg,${theme.palette.background.paper} 0%, ${theme.palette.background.paper} 10%, ${theme.palette.lightblue.main} 40%,  ${theme.palette.lightblue.main} 50%,  ${theme.palette.lightblue.main} 60%, ${theme.palette.background.paper} 90%,  ${theme.palette.background.paper} 100%)`,
             },
             '&:hover': {
                 background: hexToRgba(theme.palette.lightblue.hover,.4),
