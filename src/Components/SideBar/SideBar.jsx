@@ -13,7 +13,7 @@ const style = (width) => {
 }
 
 
-class SideBar extends Component {
+export default class SideBar extends Component {
     constructor(props) {
         super(props)
         this.state = { 
@@ -41,10 +41,10 @@ class SideBar extends Component {
     render() {
         return (
             <div className="side-bar" style={this.state.style}>
-                { this.state.visible && <SideBarLinksContainer active={this.props.location.pathname}/> }
+                { this.state.visible && <SideBarLinksContainer unaprop={"queseuo"}/> }
             </div>
         )
     }
 }
 
-export default withRouter(props => <SideBar {...props}/>);
+// export default withRouter(props => <SideBar {...props}/>);

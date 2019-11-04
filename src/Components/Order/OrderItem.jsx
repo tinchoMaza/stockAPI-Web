@@ -19,7 +19,7 @@ export default function OrderItem(props){
 const useStyles = makeStyles(theme => ({
     root: props => ({
       height: props.opened ? (props.items < 15 ? 116+77*props.items : 100+30*props.items ) : 100,
-      margin: `${theme.spacing(1)}px auto`,
+      margin: `${theme.spacing(2)}px auto`,
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
