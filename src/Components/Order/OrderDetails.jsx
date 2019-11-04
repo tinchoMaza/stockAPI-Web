@@ -8,6 +8,9 @@ import Button from '@material-ui/core/Button'
 import IconButton from '@material-ui/core/IconButton'
 import { makeStyles } from '@material-ui/core/styles'
 import { hexToRgba } from '../../utils/styling'
+import CancelRoundedIcon from '@material-ui/icons/CancelRounded'
+import ThumbUpRoundedIcon from '@material-ui/icons/ThumbUpRounded'
+import ThumbDownAltRoundedIcon from '@material-ui/icons/ThumbDownAltRounded'
 
 export default function OrderDetails(props) {
     const classes = useStyles(props)
@@ -17,8 +20,20 @@ export default function OrderDetails(props) {
                 <CloseIcon/>
             </IconButton>
             <div className={classes.actionButtonsContainer}>
-                <Button variant="contained" className={classes.acceptButton}>Accept</Button>
-                <Button variant="contained" className={classes.declineButton}>Decline</Button>
+                <Button 
+                    variant="contained" 
+                    className={classes.acceptButton}
+                >
+                    <ThumbUpRoundedIcon className={classes.buttonIcon}/>
+                    Accept
+                </Button>
+                <Button 
+                    variant="contained" 
+                    className={classes.declineButton}
+                >
+                    <ThumbDownAltRoundedIcon className={classes.buttonIcon}/>
+                    Decline
+                </Button>
             </div>
             <ul>
                 <Grid className={classes.topContainer} container >
@@ -65,6 +80,9 @@ const useStyles = makeStyles(theme => ({
             transition :'.4s',
         },
     },
+    buttonIcon:{
+        marginRight : 10,
+    },
     actionButtonsContainer: {
         position: 'absolute',
         top: 50,
@@ -77,6 +95,8 @@ const useStyles = makeStyles(theme => ({
         backgroundColor: theme.palette.action.accept.main,
         color: theme.palette.common.white,
         margin: theme.spacing(1),
+        padding: theme.spacing(1,1.5),
+
         '&:hover': {
             fontWeight: 500,
             backgroundColor: hexToRgba(theme.palette.action.accept.main,theme.palette.action.hoverOpacity),
@@ -86,6 +106,8 @@ const useStyles = makeStyles(theme => ({
         backgroundColor: theme.palette.action.decline.main,
         color: theme.palette.common.white,
         margin: theme.spacing(1),
+        padding: theme.spacing(1,1.5),
+
         '&:hover': {
             fontWeight: 500,
             backgroundColor: hexToRgba(theme.palette.action.decline.main,theme.palette.action.hoverOpacity),
