@@ -1,8 +1,9 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
-
+import React from 'react'
+import { makeStyles } from '@material-ui/core/styles'
+import Grid from '@material-ui/core/Grid'
+import Paper from '@material-ui/core/Paper'
+import Product from './Product'
+import {mockProducts} from '../../utils/mockingValues'
 
 const useStyles = makeStyles(theme => ({
     container: {
@@ -20,40 +21,9 @@ export default function ProductsGrid() {
     return (
         <div>
             <Grid container spacing={2}>
-                <Grid item xs={12} className={classes.container}>
-                    <Grid container justify="center" spacing={2}>
-                    {[0, 1, 2, 4].map(value => (
-                        <Grid key={value} item>
-                        <Paper className={classes.paper} />
-                        </Grid>
-                    ))}
-                    {[0, 1, 2, 4].map(value => (
-                        <Grid key={value} item>
-                        <Paper className={classes.paper} />
-                        </Grid>
-                    ))}
-                    {[0, 1, 2, 4].map(value => (
-                        <Grid key={value} item>
-                        <Paper className={classes.paper} />
-                        </Grid>
-                    ))}
-                    {[0, 1, 2, 4].map(value => (
-                        <Grid key={value} item>
-                        <Paper className={classes.paper} />
-                        </Grid>
-                    ))}
-                    {[0, 1, 2, 4].map(value => (
-                        <Grid key={value} item>
-                        <Paper className={classes.paper} />
-                        </Grid>
-                    ))}
-                    {[0, 1, 2, 4].map(value => (
-                        <Grid key={value} item>
-                        <Paper className={classes.paper} />
-                        </Grid>
-                    ))}
-                    </Grid>
-                </Grid>
+                {mockProducts.map( (product) => {
+                    return <Product content={product}/>
+                })}
             </Grid>
         </div>
     )
