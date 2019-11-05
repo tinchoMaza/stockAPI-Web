@@ -1,17 +1,15 @@
 import React from 'react'
-
-import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem'
-
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import StoreMallDirectoryRoundedIcon from '@material-ui/icons/StoreMallDirectoryRounded';
-import FormatListBulletedRoundedIcon from '@material-ui/icons/FormatListBulletedRounded';
-import ShoppingCartRoundedIcon from '@material-ui/icons/ShoppingCartRounded';
-import FavoriteRoundedIcon from '@material-ui/icons/FavoriteRounded';
-import SettingsRoundedIcon from '@material-ui/icons/SettingsRounded';
+import ListItemIcon from '@material-ui/core/ListItemIcon'
+import ListItemText from '@material-ui/core/ListItemText'
+import StoreMallDirectoryRoundedIcon from '@material-ui/icons/StoreMallDirectoryRounded'
+import FormatListBulletedRoundedIcon from '@material-ui/icons/FormatListBulletedRounded'
+import ShoppingCartRoundedIcon from '@material-ui/icons/ShoppingCartRounded'
+import FavoriteRoundedIcon from '@material-ui/icons/FavoriteRounded'
+import SettingsRoundedIcon from '@material-ui/icons/SettingsRounded'
+import SubItems from './SubItems/SubItems'
 import {Link} from "react-router-dom"
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles'
 
 const iconSelector = (label) =>{
     switch(label){
@@ -33,6 +31,7 @@ export default function SideBarLink(props) {
                         <ListItemIcon>{iconSelector(props.label)}</ListItemIcon>
                         <ListItemText primary={props.label} />
                     </ListItem>
+                    {props.active && <SubItems id={props.label}/>}
                 </div>
             </Link>    
         </div>

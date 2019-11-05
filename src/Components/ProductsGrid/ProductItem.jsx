@@ -24,15 +24,22 @@ const useStyles = makeStyles(theme => ({
         // background: 'white',
         '&:hover' :{
             transition: '.3s',
-            background: `linear-gradient(180deg, ${data.lightVibrant} 90%, ${data.vibrant} 120%)`,
+            // background: `linear-gradient(180deg, ${data.lightVibrant} 90%, ${data.vibrant} 120%)`,
         },
     }),
-    media: {
+    thumbnailContainer: {
         height: 200,
         width: 200,
         margin:  `auto`,
         marginBottom: theme.spacing(2),
         borderRadius: 15,
+        zIndex: 99,
+        overflow:'hidden'
+    },
+    media: {
+        margin:  `auto`,
+        height: 200,
+        width: 200,
         '&:hover' :{
             transform: 'scale(1.05)',
             transition: '.3s',
@@ -43,7 +50,7 @@ const useStyles = makeStyles(theme => ({
         margin: theme.spacing(0.5),
     },
   }));
-export default function Product(props) {
+export default function ProductItem(props) {
     const product = props.content
     const { data, loading, error } = usePalette(product.thumb)
     const classes = useStyles(data);
@@ -54,11 +61,13 @@ export default function Product(props) {
                 <Grid container className={classes.container} >
                     <Grid key={product._id} item>
                         <Card className={classes.card}>
-                            <CardMedia
-                                className={classes.media}
-                                image={product.thumb}
-                                title="Thumbnail"
-                            />
+                            <div className={classes.thumbnailContainer}>
+                                <CardMedia
+                                    className={classes.media}
+                                    image={product.thumb}
+                                    title="Thumbnail"
+                                />
+                            </div>
                             <Divider/>
                             <div className={classes.details}>
                                 <Typography variant="h6">{product.name}</Typography>
