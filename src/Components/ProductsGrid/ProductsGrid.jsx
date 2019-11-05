@@ -7,11 +7,9 @@ import {mockProducts} from '../../utils/mockingValues'
 
 const useStyles = makeStyles(theme => ({
     container: {
-        margin: '10px',
-    },
-    paper: {
-        height: 340,
-      width: 360,
+        margin: 'auto',
+        justifyContent: 'space-evenly',
+
     },
   }));
   
@@ -20,7 +18,7 @@ export default function ProductsGrid() {
 
     return (
         <div>
-            <Grid container spacing={2}>
+            <Grid container className={classes.container} spacing={2}>
                 {mockProducts.map( (product) => {
                     return <Product content={product}/>
                 })}

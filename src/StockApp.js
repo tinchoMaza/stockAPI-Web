@@ -81,6 +81,9 @@ const theme = createMuiTheme({
       fontSize: '1rem',
       fontWeight: '600',
     },
+    body2: {
+      color: '#888'
+    },
     fontFamily: [
       'Heebo',
       '-apple-system',
