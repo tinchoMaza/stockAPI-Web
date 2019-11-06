@@ -8,7 +8,7 @@ import {mockProducts} from '../../utils/mockingValues'
 const useStyles = makeStyles(theme => ({
     container: {
         margin: 'auto',
-        justifyContent: 'space-evenly',
+        justifyContent: 'center',
 
     },
   }));

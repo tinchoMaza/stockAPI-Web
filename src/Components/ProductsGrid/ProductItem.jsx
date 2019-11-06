@@ -11,20 +11,23 @@ import { usePalette } from 'react-palette'
 
 const useStyles = makeStyles(theme => ({
     container: {
-        margin:theme.spacing(1),
-        justifyContent: 'space-evenly',
+        margin:theme.spacing(0),
     },
     card: data => ({
         cursor: 'pointer',
         padding: theme.spacing(2),
-        margin: theme.spacing(0.5),
+        margin: theme.spacing(1),
         height: 340,
         width: 360,
-        // background: data.vibrant,
-        // background: 'white',
         '&:hover' :{
             transition: '.3s',
-            // background: `linear-gradient(180deg, ${data.lightVibrant} 90%, ${data.vibrant} 120%)`,
+            // background:`linear-gradient(180deg, ${theme.palette.lightblue.main} 90%, ${theme.palette.lightblue.hover} 120%)`,
+            // background: `linear-gradient(180deg, ${data.lightMuted} 90%, ${data.muted} 120%)`,
+
+        },
+        '&:hover .MuiCardMedia-root' :{
+            transform: 'scale(1.05)',
+            transition: '.3s ease',
         },
     }),
     thumbnailContainer: {
@@ -40,14 +43,10 @@ const useStyles = makeStyles(theme => ({
         margin:  `auto`,
         height: 200,
         width: 200,
-        '&:hover' :{
-            transform: 'scale(1.05)',
-            transition: '.3s',
-        },
     },
-    info: {
-        padding: theme.spacing(2),
-        margin: theme.spacing(0.5),
+    details: {
+        padding: theme.spacing(1),
+        margin: theme.spacing(0),
     },
   }));
 export default function ProductItem(props) {

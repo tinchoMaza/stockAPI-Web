@@ -72,7 +72,10 @@ export default class MainContainer extends Component {
                     </Route>
                     <Route path="/store">
                         <>
-                            <div >
+                            <div style={{float: 'left', color:'#777'}}>
+                                <p style={this.state.styles.sortingSelection} > Home > Store > Alimentos </p>
+                            </div>
+                            <div style={{float: 'right', color:'#777'}}>
                                 <p style={this.state.styles.sortingSelection} >Ordenar por:  Fecha ▼ </p>
                             </div>
                             <ProductsGrid/>
