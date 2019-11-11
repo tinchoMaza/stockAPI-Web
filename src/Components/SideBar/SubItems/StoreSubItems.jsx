@@ -1,20 +1,25 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/styles'
+import { storeCategories } from '../../../utils/storeCategories'
 
 export default function StoreSubItems() {
     const classes = useStyles();
     return (
         <div className={classes.categories}>
-            <Typography variant="subtitle2">Oficina</Typography>
-            <Typography variant="h6">Alimentos</Typography>
-            <Typography className={classes.subcategories} variant="subtitle2">-  Lacteos</Typography>
-            <Typography className={classes.subcategories} variant="subtitle2">-  Frutas</Typography>
-            <Typography className={classes.subcategories} variant="subtitle2">-  Cereales</Typography>
-            <Typography className={classes.subcategories} variant="subtitle2">-  Infusiones</Typography>
-            <Typography variant="subtitle2">Tecnología</Typography>
-            <Typography variant="subtitle2">Recreación</Typography>
-            <Typography variant="subtitle2">Miscelaneo</Typography>
+            {
+                storeCategories.map( sub => {
+                    var pathnames = sub.link.split('/').filter(x => x);
+                    return ( 
+                        <Link to={sub.link}>
+                            <div className={classes[`sub${pathnames.length-1}`]}>
+                                <Typography>{sub.label}</Typography>                                
+                            </div>
+                        </Link>
+                    )
+                })
+            }
         </div>
     )
 }
@@ -23,8 +28,20 @@ const useStyles = makeStyles(theme => ({
     categories: {
         margin: theme.spacing(1),
         color: theme.palette.grey[600],
+        '& a': {
+            color: 'inherit',
+            textDecoration: 'none',
+        }
     },
-    subcategories: {
+    sub1: {
         marginLeft: theme.spacing(2),
-    }
+        color: theme.palette.grey[700],
+        '& p':{fontSize: '.95em'},
+
+    },    
+    sub2: {
+        marginLeft: theme.spacing(4),
+        color: theme.palette.grey[600],
+        '& p':{fontSize: '.9em'},
+    },
 }))

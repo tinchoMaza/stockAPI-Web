@@ -16,27 +16,27 @@ import Divider from '@material-ui/core/Divider';
                 {
                     label:"Store",
                     to:"/store",
-                    active: props.location.pathname === '/store',
+                    active: props.location.pathname.includes('/store'),
                 },
                 {
                     label:"Orders",
                     to:"/orders",
-                    active: props.location.pathname === '/orders',
+                    active: props.location.pathname.includes('/orders'),
                 },
                 {
                     label:"Cart", 
                     to:"/cart", 
-                    active: props.location.pathname === '/cart', 
+                    active: props.location.pathname.includes('/cart'),
                 },
                 {
                     label:"Favorites", 
                     to:"/favorites", 
-                    active: props.location.pathname === '/favorites', 
+                    active: props.location.pathname.includes('/favorites'),
                 },
                 {
                     label:"Settings", 
                     to:"/settings", 
-                    active: props.location.pathname === '/settings', 
+                    active: props.location.pathname.includes('/settings'),
                 },
             ]
         })

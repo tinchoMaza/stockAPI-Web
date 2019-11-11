@@ -8,6 +8,36 @@ import Divider from '@material-ui/core/Divider';
 import Typography from '@material-ui/core/Typography'
 import { usePalette } from 'react-palette'
 
+export default function ProductItem(props) {
+    const product = props.content
+    const { data, loading, error } = usePalette(product.thumb)
+    const classes = useStyles(data);
+    return (
+        <div>
+            <Grid item xs={12} className={classes.container}>
+                <Grid container className={classes.container} >
+                    <Grid key={product._id} item>
+                        <Card className={classes.card}>
+                            <div className={classes.thumbnailContainer}>
+                                <CardMedia
+                                    className={classes.media}
+                                    image={product.thumb}
+                                    title="Thumbnail"
+                                />
+                            </div>
+                            <Divider/>
+                            <div className={classes.details}>
+                                <Typography variant="h6">{product.name}</Typography>
+                                <Typography variant="body2">{product.description}</Typography>
+                                <Typography variant="subtitle1">Stock : {product.stock.$numberInt} </Typography>
+                            </div>
+                        </Card>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </div>
+    )
+}
 
 const useStyles = makeStyles(theme => ({
     container: {
@@ -49,35 +79,3 @@ const useStyles = makeStyles(theme => ({
         margin: theme.spacing(0),
     },
   }));
-export default function ProductItem(props) {
-    const product = props.content
-    const { data, loading, error } = usePalette(product.thumb)
-    const classes = useStyles(data);
-    return (
-        <div>
-            <Grid item xs={12} className={classes.container}>
-                <Grid container className={classes.container} >
-                    <Grid key={product._id} item>
-                        <Card className={classes.card}>
-                            <div className={classes.thumbnailContainer}>
-                                <CardMedia
-                                    className={classes.media}
-                                    image={product.thumb}
-                                    title="Thumbnail"
-                                />
-                            </div>
-                            <Divider/>
-                            <div className={classes.details}>
-                                <Typography variant="h6">{product.name}</Typography>
-                                <Typography variant="body2">{product.description}</Typography>
-                                <Typography variant="subtitle1">Stock : {product.stock.$numberInt} </Typography>
-                            </div>
-                        </Card>
-                    </Grid>
-                </Grid>
-            </Grid>
-        </div>
-    )
-}
-
-
