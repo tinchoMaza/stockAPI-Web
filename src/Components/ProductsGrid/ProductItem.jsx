@@ -27,7 +27,7 @@ const useStyles = makeStyles(theme => ({
         },
         '&:hover .MuiCardMedia-root' :{
             transform: 'scale(1.05)',
-            transition: '.3s ease',
+            transition: '.4s ease-out',
         },
     }),
     thumbnailContainer: {
@@ -53,7 +53,6 @@ export default function ProductItem(props) {
     const product = props.content
     const { data, loading, error } = usePalette(product.thumb)
     const classes = useStyles(data);
-    console.log({product, data, loading , error})
     return (
         <div>
             <Grid item xs={12} className={classes.container}>

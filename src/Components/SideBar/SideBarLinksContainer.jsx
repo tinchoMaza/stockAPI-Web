@@ -7,24 +7,42 @@ import Divider from '@material-ui/core/Divider';
  class SideBarLinksContainer extends Component {
     constructor(props) {
         super(props)
-        this.state = { }
+        this.state = {  }
     }
 
     static getDerivedStateFromProps(props, state) {
         return ({
             links: [
-                {label:"Store", to:"/store", active: props.location.pathname === '/store'},
-                {label:"Orders", to:"/orders", active: props.location.pathname === '/orders'},
-                {label:"Cart", to:"/cart", active: props.location.pathname === '/cart'},
-                {label:"Favorites", to:"/favorites", active: props.location.pathname === '/favorites'},
-                {label:"Settings", to:"/settings", active: props.location.pathname === '/settings'},
+                {
+                    label:"Store",
+                    to:"/store",
+                    active: props.location.pathname === '/store',
+                },
+                {
+                    label:"Orders",
+                    to:"/orders",
+                    active: props.location.pathname === '/orders',
+                },
+                {
+                    label:"Cart", 
+                    to:"/cart", 
+                    active: props.location.pathname === '/cart', 
+                },
+                {
+                    label:"Favorites", 
+                    to:"/favorites", 
+                    active: props.location.pathname === '/favorites', 
+                },
+                {
+                    label:"Settings", 
+                    to:"/settings", 
+                    active: props.location.pathname === '/settings', 
+                },
             ]
         })
     }
 
     render() {
-        console.log(this.state)
-
         return (
             <div>
                 <List>

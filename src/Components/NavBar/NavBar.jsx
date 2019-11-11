@@ -25,7 +25,7 @@ export default function NavBar(props){
           <div className={classes.logo}>
             <Link to='/'>
               <Typography variant="h8" >
-                <p><a>Stöck App</a></p>
+                <p><span>Stöck App</span></p>
               </Typography>
             </Link>
           </div>
@@ -70,16 +70,20 @@ const useStyles = makeStyles(theme => ({
     transform: 'translateX(-50%)',
     left: '50%',
     position: 'absolute',
-    '& a' :{
-      alignItems: 'center',
-      color: 'inherit',
-      textDecoration: 'none',
-      transition: '0.4s ease-out' ,
-      fontSize: '24px',
-    },
+    '& a' : {textDecoration: 'none'},
     '& p:hover' :{
-      textShadow: " 0 0 1px #fff, 0 0 2px #fff, 0 0 3px #fff, 0 0 4px #2da7cb, 0 0 7px #2da7cb, 0 0 8px #2da7cb, 0 0 10px #2da7cb, 0 0 15px #2da7cb",
+      textShadow: " 0 0 3px #fff, 0 0 4px #2da7cb, 0 0 4px #2da7cb, 0 0 8px #2da7cb, 0 0 8px #2da7cb, 0 0 10px #2da7cb",
       color: 'white',
+    },
+    '& span' :{
+      alignItems: 'center',
+      color: theme.palette.primary.main,
+      textDecoration: 'none',
+      transition: '0.2s ease-out' ,
+      fontSize: '24px',
+      '&:hover' :{
+        color: 'white',
+      },
     },
   },
 
@@ -87,9 +91,6 @@ const useStyles = makeStyles(theme => ({
     '& li' :{
       display: 'inline-block',
       listStyle: 'none',
-      '& button':{
-        color: theme.palette.primary.main,
-      },
     },
     fontSize: '24px',
   },
@@ -98,6 +99,7 @@ const useStyles = makeStyles(theme => ({
     fontSize: '24px',
   },
   
+  
   appBar:{
     width: '100%',
     height: '60px',
@@ -105,18 +107,26 @@ const useStyles = makeStyles(theme => ({
     position: 'absolute',
     top: 0,
   },
+
   toolBar:{
     color: '#2DA7CB',
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
+
   iconButton:{
     edge: 'start', 
-    color: 'inherit',
-    fontSize: 'inherit' ,
+    color: theme.palette.primary.main,
+    transition: '0.4s ease-out' ,
+    '&:hover' :{
+      color: '#fff',
+      transition: '0.4s ease-out' ,
+    },
   },
+
   buttonText:{
     padding:'10px'
   },
+
 }))

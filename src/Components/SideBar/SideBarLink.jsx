@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
@@ -22,18 +22,30 @@ const iconSelector = (label) =>{
 }
 
 export default function SideBarLink(props) {
-    const classes = useStyles(props)
+    const [openSubcategories, setOpen] = useState(false)
+    const classes = useStyles(props,openSubcategories)
+
+    const handleClick = () => {
+        props.active ? setOpen(prevOpen => !prevOpen) : setOpen(true)
+        
+    }
+
     return (
         <div>
-            <Link className={classes.link} to={props.link}>
-                <div className={classes.separation}>
-                    <ListItem button key={props.label} className={classes.item}>
-                        <ListItemIcon>{iconSelector(props.label)}</ListItemIcon>
-                        <ListItemText primary={props.label} />
-                    </ListItem>
-                    {props.active && <SubItems id={props.label}/>}
+                <div className={classes.container}>
+                    <Link className={classes.link} to={props.link}>
+                        <ListItem button onClick={handleClick} key={props.label} className={classes.item}>
+                            <ListItemIcon>{iconSelector(props.label)}</ListItemIcon>
+                            <ListItemText primary={props.label} />
+                        </ListItem>
+                    </Link> 
+                    {openSubcategories && 
+                        <div className={classes.subcategories}>
+                            <SubItems id={props.label}/>
+                        </div>
+                    } 
                 </div>
-            </Link>    
+   
         </div>
     )
 }
@@ -42,10 +54,15 @@ const useStyles = makeStyles(theme => ({
     link :{
         textDecoration: 'none',
     },
-
-    separation: {
+    container: {
         margin: theme.spacing(1),
     },
+    // subcategories : (props) => ({
+    //     transition: 'transform .4s ease , max-height .4s ease',
+    //     maxHeight: props.active ? 500 : 0, 
+    //     transformOrigin:  'top',
+    //     transform: props.active ? 'scaleY(1)' : 'scaleY(0)',   
+    // }),
     item : props => ({
         padding: theme.spacing(.5,1),
         borderRadius: '5px',
