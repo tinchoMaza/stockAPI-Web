@@ -9,7 +9,8 @@ export default function OrdersSubItems() {
         <div className={classes.categories}>
             <Typography>Category 1</Typography>                                
             <Typography>Category 2</Typography>                                
-            <Typography>Category 3</Typography>                                
+            <Typography>Category 3</Typography>  
+                              
         </div>
     )
 }

@@ -9,6 +9,8 @@ import FavoriteRoundedIcon from '@material-ui/icons/FavoriteRounded'
 import SettingsRoundedIcon from '@material-ui/icons/SettingsRounded'
 import ExpandLessRoundedIcon from '@material-ui/icons/ExpandLessRounded';
 import ExpandMoreRoundedIcon from '@material-ui/icons/ExpandMoreRounded';
+import Divider from '@material-ui/core/Divider';
+
 import {Link} from "react-router-dom"
 import { makeStyles } from '@material-ui/core/styles'
 
@@ -51,10 +53,11 @@ export default function SideBarLink(props) {
                             {props.children !== null && !openSubcategories && <ExpandMoreRoundedIcon onClick={forceOpen}/>}
                         </ListItem>
                     </Link> 
-                    {openSubcategories && 
+                    {props.children !== null && openSubcategories && 
                         <div className={classes.subcategories}>
-                        {props.children}                        
-                    </div>
+                            {props.children}  
+                            <Divider style={{margin:'15px 0'}}/>
+                        </div>
                     } 
                 </div>
    
@@ -72,6 +75,7 @@ const useStyles = makeStyles(theme => ({
     container: {
         margin: theme.spacing(1),
     },
+    subcategories: {margin:'15px 0'},
     // subcategories : (props) => ({
     //     transition: 'transform .4s ease , max-height .4s ease',
     //     maxHeight: props.active ? 500 : 0, 

@@ -69,7 +69,6 @@ import SettingsSubItems from './SubItems/SettingsSubItems'
                         </SideBarLink>
                         )
                     })}
-                    <Divider/>
                 </List>
             </div>
         )
