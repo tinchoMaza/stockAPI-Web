@@ -6,6 +6,5 @@ export const hexToRgba = (hex,a) => {
     var r = parseInt(`0x${rHex}`)
     var g = parseInt(`0x${gHex}`)
     var b = parseInt(`0x${bHex}`)
-    console.log(`rgba(${r},${g},${b},${a})`)
     return `rgba(${r},${g},${b},${a})`
 }

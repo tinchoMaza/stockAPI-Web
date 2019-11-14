@@ -3,6 +3,9 @@ import List from '@material-ui/core/List';
 import SideBarLink from './SideBarLink'
 import {withRouter} from 'react-router-dom';
 import Divider from '@material-ui/core/Divider';
+import StoreSubItems from './SubItems/StoreSubItems'
+import OrdersSubItems from './SubItems/OrdersSubItems'
+import SettingsSubItems from './SubItems/SettingsSubItems'
 
  class SideBarLinksContainer extends Component {
     constructor(props) {
@@ -42,6 +45,15 @@ import Divider from '@material-ui/core/Divider';
         })
     }
 
+    subItemSelector = (label) => {
+        switch(label){
+            case 'Store': return <StoreSubItems/>
+            case 'Orders': return <OrdersSubItems/>
+            case 'Settings': return <SettingsSubItems/>
+            default : return null
+        }
+    }
+
     render() {
         return (
             <div>
@@ -52,7 +64,9 @@ import Divider from '@material-ui/core/Divider';
                             label={link.label} 
                             link={link.to}
                             active={link.active}
-                        />
+                        >
+                            {this.subItemSelector(link.label)}
+                        </SideBarLink>
                         )
                     })}
                     <Divider/>

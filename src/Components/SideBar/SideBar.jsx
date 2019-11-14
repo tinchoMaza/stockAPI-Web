@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import SideBarLinksContainer from './SideBarLinksContainer'
-import {withRouter} from 'react-router-dom';
 
 const style = (width) => { 
     return {

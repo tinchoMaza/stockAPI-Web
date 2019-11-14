@@ -8,7 +8,6 @@ export default class OrdersListContainer extends Component {
     this.state = { 
         displayedOrders: mockOrdersList
     }
-    console.log(this.state.displayedOrders)
 
   }
   render(){

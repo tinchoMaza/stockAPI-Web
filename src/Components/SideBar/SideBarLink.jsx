@@ -7,7 +7,8 @@ import FormatListBulletedRoundedIcon from '@material-ui/icons/FormatListBulleted
 import ShoppingCartRoundedIcon from '@material-ui/icons/ShoppingCartRounded'
 import FavoriteRoundedIcon from '@material-ui/icons/FavoriteRounded'
 import SettingsRoundedIcon from '@material-ui/icons/SettingsRounded'
-import SubItems from './SubItems/SubItems'
+import ExpandLessRoundedIcon from '@material-ui/icons/ExpandLessRounded';
+import ExpandMoreRoundedIcon from '@material-ui/icons/ExpandMoreRounded';
 import {Link} from "react-router-dom"
 import { makeStyles } from '@material-ui/core/styles'
 
@@ -27,22 +28,33 @@ export default function SideBarLink(props) {
 
     const handleClick = () => {
         props.active ? setOpen(prevOpen => !prevOpen) : setOpen(true)
-        
+    }
+
+    const forceClose = () => {
+        setOpen(false)
+    }   
+
+    const forceOpen = () => {
+        setOpen(true)
     }
 
     return (
         <div>
                 <div className={classes.container}>
                     <Link className={classes.link} to={props.link}>
-                        <ListItem button onClick={handleClick} key={props.label} className={classes.item}>
-                            <ListItemIcon>{iconSelector(props.label)}</ListItemIcon>
-                            <ListItemText primary={props.label} />
+                        <ListItem button key={props.label} className={classes.item}>
+                            <div className={classes.linkInfo} onClick={handleClick}>
+                                <ListItemIcon>{iconSelector(props.label)}</ListItemIcon>
+                                <ListItemText primary={props.label} />
+                            </div>
+                            {props.children !== null && openSubcategories && <ExpandLessRoundedIcon onClick={forceClose}/>}
+                            {props.children !== null && !openSubcategories && <ExpandMoreRoundedIcon onClick={forceOpen}/>}
                         </ListItem>
                     </Link> 
                     {openSubcategories && 
                         <div className={classes.subcategories}>
-                            <SubItems id={props.label}/>
-                        </div>
+                        {props.children}                        
+                    </div>
                     } 
                 </div>
    
@@ -53,6 +65,9 @@ export default function SideBarLink(props) {
 const useStyles = makeStyles(theme => ({
     link :{
         textDecoration: 'none',
+    },
+    linkInfo:{
+        display: 'contents',
     },
     container: {
         margin: theme.spacing(1),
