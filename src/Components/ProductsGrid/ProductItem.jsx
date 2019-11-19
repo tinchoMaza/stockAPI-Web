@@ -8,10 +8,15 @@ import Divider from '@material-ui/core/Divider';
 import Typography from '@material-ui/core/Typography'
 import { usePalette } from 'react-palette'
 
+const shortenText = (text,n) => {
+    return text.length > n ? text.substring(0,n) + '...' : text
+}
+
 export default function ProductItem(props) {
     const product = props.content
     const { data, loading, error } = usePalette(product.thumb)
     const classes = useStyles(data);
+    
     return (
         <div>
             <Grid item xs={12} className={classes.container}>
@@ -28,7 +33,7 @@ export default function ProductItem(props) {
                             <Divider/>
                             <div className={classes.details}>
                                 <Typography variant="h6">{product.name}</Typography>
-                                <Typography variant="body2">{product.description}</Typography>
+                                <Typography variant="body2">{shortenText(product.description,80)}</Typography>
                                 <Typography variant="subtitle1">Stock : {product.stock.$numberInt} </Typography>
                             </div>
                         </Card>
