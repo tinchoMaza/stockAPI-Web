@@ -19,7 +19,7 @@ const iconSelector = (label) =>{
         case 'Store': return <StoreMallDirectoryRoundedIcon/>
         case 'Orders': return <FormatListBulletedRoundedIcon/>
         case 'Cart': return <ShoppingCartRoundedIcon/>
-        case 'Favorites': return <FavoriteRoundedIcon/>
+        case 'Testing': return <FavoriteRoundedIcon/>
         case 'Settings': return <SettingsRoundedIcon/>
     }
 }

@@ -32,9 +32,9 @@ import SettingsSubItems from './SubItems/SettingsSubItems'
                     active: props.location.pathname.includes('/cart'),
                 },
                 {
-                    label:"Favorites", 
-                    to:"/favorites", 
-                    active: props.location.pathname.includes('/favorites'),
+                    label:"Testing", 
+                    to:"/testing", 
+                    active: props.location.pathname.includes('/testing'),
                 },
                 {
                     label:"Settings", 

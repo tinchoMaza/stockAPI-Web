@@ -15,7 +15,7 @@ export default function MainContainer(props) {
             <Route path="/" exact>
                     <Home/>
                 </Route>
-                <Route path="/favorites" exact>
+                <Route path="/testing" exact>
                     <TestingPage/>
                 </Route>
                 <Route path="/help">
