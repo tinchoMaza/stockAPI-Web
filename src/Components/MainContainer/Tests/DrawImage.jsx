@@ -40,7 +40,6 @@ class DrawImage extends Component{
                 facesCounter++;
                 ctx.restore();
 
-
                 ctx.save();
                 ctx.strokeStyle = "red";
                 ctx.shadowColor = "red";
@@ -68,9 +67,15 @@ class DrawImage extends Component{
         var faceInfo;
         return(
             <div className={classes.container}>
-                <div>
+                <div className={classes.canvasWrapper} style={{height: this.props.size.height, width: this.props.size.width}}>
                     <img className={classes.image} ref="image" src={this.props.url}></img>
-                    <canvas className={classes.canva} ref="canvas" width={this.props.size.width} height={this.props.size.height} />
+                    <canvas className={classes.canvas} ref="canvas" width={this.props.size.width} height={this.props.size.height} />
+                    {this.props.res.map( (face) => {
+                        return(<>
+                        <div className={classes.overlay} style={{transform: `rotate(${face.faceAttributes.headPose.roll}deg)`,top:face.faceLandmarks.pupilLeft.y-2,left:face.faceLandmarks.pupilLeft.x-20}}></div>
+                        <div className={classes.overlay} style={{transform: `rotate(${face.faceAttributes.headPose.roll}deg)`,top:face.faceLandmarks.pupilRight.y-2,left:face.faceLandmarks.pupilRight.x-20}}></div>
+                        </>)
+                    })}
                 </div>
                 <Grid container className={classes.grid} spacing={2}>
                     {this.props.res.map( (face) => {
@@ -79,6 +84,8 @@ class DrawImage extends Component{
                             faceCounter : facesCounter+1,
                             ...face
                         }
+                        delete faceInfo.faceRectangle;
+                        // delete faceInfo.faceLandmarks;                        
                         return(
                             <Grid item >
                                 <JSONPretty json={faceInfo} theme={customTheme(facesCounter%8)}/>
@@ -127,6 +134,18 @@ const styles = theme => ({
         flexDirection: 'column',
         justifyContent: 'flex-start',
         alignItems: 'center',
+        position: 'relative'
+    },
+    overlay:{
+        position: 'absolute',
+        zIndex: 9999,
+        background: 'pink',
+        height: 4,
+        width: 40,
+        borderRadius: '50%',
+        webkitBoxShadow: '0px 0px 25px 25px rgba(255,0,0,1)',
+        mozBoxShadow: '0px 0px 25px 25px rgba(255,0,0,1)',
+        boxShadow: '0px 0px 25px 25px rgba(255,0,0,1)',
     },
     grid: {
         margin: 'auto',
@@ -136,7 +155,14 @@ const styles = theme => ({
     image:{
         display: 'none'
     },
-    canva:{
+    canvas:{
+        position: 'absolute'
+
+        // border: '1px solid blue',
+    },
+    canvasWrapper:{
+        position: 'relative',
+
         // border: '1px solid blue',
     }
 });
