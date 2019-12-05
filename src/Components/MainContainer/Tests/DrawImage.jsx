@@ -11,22 +11,32 @@ class DrawImage extends Component{
         const img = this.refs.image
         
         img.onload = () => {
-            const canvas = this.refs.canvas
-            const ctx = canvas.getContext("2d")
-            const faces = this.props.res
-
-            ctx.drawImage(img, 0, 0)
+            const canvas = this.refs.canvas;
+            const ctx = canvas.getContext("2d");
+            const faces = this.props.res;
             var facesCounter = 0;
-            ctx.font = "18px Courier"
+            var top, left, height, width, rotation;
+            ctx.drawImage(img, 0, 0)
+            ctx.font = "18px Courier";
             faces.forEach((face)=>{
+                top = face.faceRectangle.top;
+                left = face.faceRectangle.left;
+                height = face.faceRectangle.height;
+                width = face.faceRectangle.width;
+                rotation = face.faceAttributes.headPose.roll;
                 ctx.fillStyle = colors[facesCounter];
-                ctx.fillText(face.faceId.substring(24,36), face.faceRectangle.left, face.faceRectangle.top+face.faceRectangle.height+18)
+                
+                ctx.save();
+                ctx.fillText(face.faceId.substring(24,36), left, top+height+18 )
                 ctx.beginPath();
                 ctx.lineWidth = "2";
                 ctx.strokeStyle = colors[facesCounter];
-                ctx.rect(face.faceRectangle.left, face.faceRectangle.top, face.faceRectangle.width, face.faceRectangle.height);
+                ctx.translate( left+width/2, top+height/2 );
+                ctx.rotate(rotation * Math.PI / 180);
+                ctx.rect( -width/2, -height/2, width,height);
                 ctx.stroke();
                 facesCounter++;
+                ctx.restore();
             })
         }
     }
