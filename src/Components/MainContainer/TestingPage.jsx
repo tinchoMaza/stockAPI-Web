@@ -16,7 +16,7 @@ export default function TestingPage() {
     const handleSend = (image) =>{
       var params = {
         returnFaceId: "true",
-        returnFaceLandmarks: "false",
+        returnFaceLandmarks: "true",
         returnFaceAttributes:
             "age,gender,headPose,smile,facialHair,glasses,emotion," +
             "hair,makeup,occlusion,accessories,blur,exposure,noise"
