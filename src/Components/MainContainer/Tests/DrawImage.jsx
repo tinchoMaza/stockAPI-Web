@@ -56,7 +56,7 @@ class DrawImage extends Component{
                     {this.props.res.map( (face) => {
                         facesCounter++;
                         faceInfo = {
-                            faceCounter : facesCounter,
+                            faceCounter : facesCounter+1,
                             ...face
                         }
                         return(
