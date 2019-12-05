@@ -2,20 +2,18 @@ import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import { Button, TextField } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
-import JSONPretty from 'react-json-prettify';
-
+import DrawImage from './Tests/DrawImage';
 
 const subscriptionKey = '1dc43d458b104ca6811f8939b159f451';
 const endpoint = 'https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect';
 
 export default function TestingPage() {
     const classes = useStyles();
-    const [values, setValues] = React.useState({
-      imageUrl: 'https://randomuser.me/api/portraits/men/31.jpg',
-    });
+    const [imageUrl, setImageUrl] = React.useState('https://i.imgur.com/bfJym9mg.jpg');
+    const [imageSize, setImageSize] = React.useState({});
     const [res, setRes] = React.useState('');
 
-    const handleSend = (values) =>{
+    const handleSend = (image) =>{
       var params = {
         returnFaceId: "true",
         returnFaceLandmarks: "false",
@@ -32,7 +30,7 @@ export default function TestingPage() {
           'Ocp-Apim-Subscription-Key': subscriptionKey
         },
         body: JSON.stringify({
-          url: values.imageUrl,
+          url: image,
         })
       })
       .then( response => {
@@ -45,9 +43,15 @@ export default function TestingPage() {
         console.log(err)
       })
     };
+
     const handleUrlChange = name => event => {
-      setValues({ ...values, [name]: event.target.value });
+      setImageUrl(event.target.value);
+      setRes('')
     };
+
+    const onImgLoad = (ev) => {
+      setImageSize({height:ev.target.height,width:ev.target.width});
+    }
 
     return (
         <div className={classes.container}>
@@ -55,7 +59,7 @@ export default function TestingPage() {
             <TextField
                 id="imageUrl"
                 label="Image url"
-                value={values.imageUrl}
+                value={imageUrl}
                 onChange={handleUrlChange("imageUrl")}
                 className={classes.textField}
                 type="text"      
@@ -66,32 +70,20 @@ export default function TestingPage() {
             <Button variant="contained" 
                     color="primary" 
                     className={classes.primaryBtn} 
-                    onClick={() => handleSend(values)}
-            >
-              Enviar
-            </Button>
-            <div className={classes.responseContainer}>
-              <div>
-                <img src={values.imageUrl}></img>
-              </div>
-              <JSONPretty json={res}/>
-            </div>
+                    onClick={() => handleSend(imageUrl)}
+                    children ="Enviar"
+            />
+            {res!=='' && <DrawImage res={res} url={imageUrl} size={imageSize}/> } 
+            <img className={classes.image} src={imageUrl} onLoad={onImgLoad}></img>
         </div>
     )
 }
-
-
 
 const useStyles = makeStyles(theme => ({
   primaryBtn: {
       margin: theme.spacing(1),
       color: theme.palette.common.white,
     },
-  responseContainer:{
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between'
-  },
   container: {
     margin: 'auto',
     paddingTop: theme.spacing(1),
@@ -115,4 +107,7 @@ const useStyles = makeStyles(theme => ({
       borderBottomWidth: '4px',
     },
   },
+  image:{
+    display:'none',
+  }
 }));

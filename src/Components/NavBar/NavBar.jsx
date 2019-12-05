@@ -1,6 +1,5 @@
 import React from 'react'
-import AppBar from '@material-ui/core/AppBar'
-import Toolbar from '@material-ui/core/Toolbar'
+import { AppBar, Toolbar, Button } from '@material-ui/core'
 import Typography from '@material-ui/core/Typography'
 import IconButton from '@material-ui/core/IconButton'
 import MenuIcon from 'mdi-react/MenuIcon'
@@ -44,12 +43,11 @@ export default function NavBar(props){
               </li>
               </Link>
               <li>
-                <IconButton className={classes.iconButton}  aria-label="login" onClick={props.toggleLoginVisibility}>
-                  <PersonIcon/>
+                <Button className={classes.labelAndIconButton} startIcon={<PersonIcon/>} aria-label="login" onClick={props.toggleLoginVisibility}>
                   <Typography className={classes.buttonText}>
                   Login
                   </Typography>
-                </IconButton>
+                </Button>
               </li>
             </ul>
           </div>
@@ -124,7 +122,14 @@ const useStyles = makeStyles(theme => ({
       transition: '0.4s ease-out' ,
     },
   },
-
+  labelAndIconButton:{
+    color: theme.palette.primary.main,
+    transition: '0.4s ease-out' ,
+    '&:hover' :{
+      color: '#fff',
+      transition: '0.4s ease-out' ,
+    },
+  },
   buttonText:{
     padding:'10px'
   },
