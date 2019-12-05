@@ -3,13 +3,14 @@ import JSONPretty from 'react-json-prettify';
 import { withStyles } from '@material-ui/styles';
 import { Grid } from '@material-ui/core';
 import {github} from 'react-json-prettify/dist/themes';
+import LaserEyes from './LaserEyes';
 
-class DrawImage extends Component{
+class DrawImage extends Component{    
 
     componentDidMount() {
 
-        const img = this.refs.image
-        
+        const img = this.refs.image;
+
         img.onload = () => {
             const canvas = this.refs.canvas;
             const ctx = canvas.getContext("2d");
@@ -18,7 +19,7 @@ class DrawImage extends Component{
             var top, left, height, width, rotation, leftEye, rightEye;
             ctx.drawImage(img, 0, 0)
             ctx.font = "24px Courier";
-            faces.forEach((face)=>{
+            /* faces.forEach((face)=>{
                 top = face.faceRectangle.top;
                 left = face.faceRectangle.left;
                 height = face.faceRectangle.height;
@@ -56,11 +57,10 @@ class DrawImage extends Component{
                 ctx.stroke();
                 ctx.restore();
 
-            })
+            }) */
         }
     }
 
-    
     render() {
         const { classes } = this.props;
         var facesCounter = -1;
@@ -70,12 +70,7 @@ class DrawImage extends Component{
                 <div className={classes.canvasWrapper} style={{height: this.props.size.height, width: this.props.size.width}}>
                     <img className={classes.image} ref="image" src={this.props.url}></img>
                     <canvas className={classes.canvas} ref="canvas" width={this.props.size.width} height={this.props.size.height} />
-                    {this.props.res.map( (face) => {
-                        return(<>
-                        <div className={classes.overlay} style={{transform: `rotate(${face.faceAttributes.headPose.roll}deg)`,top:face.faceLandmarks.pupilLeft.y-2,left:face.faceLandmarks.pupilLeft.x-20}}></div>
-                        <div className={classes.overlay} style={{transform: `rotate(${face.faceAttributes.headPose.roll}deg)`,top:face.faceLandmarks.pupilRight.y-2,left:face.faceLandmarks.pupilRight.x-20}}></div>
-                        </>)
-                    })}
+                    {this.props.res.map( (face) => <LaserEyes face={face}/> )}
                 </div>
                 <Grid container className={classes.grid} spacing={2}>
                     {this.props.res.map( (face) => {
@@ -85,7 +80,7 @@ class DrawImage extends Component{
                             ...face
                         }
                         delete faceInfo.faceRectangle;
-                        // delete faceInfo.faceLandmarks;                        
+                        delete faceInfo.faceLandmarks;                        
                         return(
                             <Grid item >
                                 <JSONPretty json={faceInfo} theme={customTheme(facesCounter%8)}/>
@@ -98,6 +93,11 @@ class DrawImage extends Component{
             </div>
         )
     }
+}
+
+const styleMyGlow = () => {
+    // return{transform: `rotate(${face.faceAttributes.headPose.roll}deg)`,top:face.faceLandmarks.pupilLeft.y-2,left:face.faceLandmarks.pupilLeft.x-10*}
+    return{transform: `rotate(45deg)`,top:20,left:10}
 }
 
 const colors = {
@@ -136,17 +136,6 @@ const styles = theme => ({
         alignItems: 'center',
         position: 'relative'
     },
-    overlay:{
-        position: 'absolute',
-        zIndex: 9999,
-        background: 'pink',
-        height: 4,
-        width: 40,
-        borderRadius: '50%',
-        webkitBoxShadow: '0px 0px 25px 25px rgba(255,0,0,1)',
-        mozBoxShadow: '0px 0px 25px 25px rgba(255,0,0,1)',
-        boxShadow: '0px 0px 25px 25px rgba(255,0,0,1)',
-    },
     grid: {
         margin: 'auto',
         justifyContent: 'center',
@@ -162,7 +151,6 @@ const styles = theme => ({
     },
     canvasWrapper:{
         position: 'relative',
-
         // border: '1px solid blue',
     }
 });
