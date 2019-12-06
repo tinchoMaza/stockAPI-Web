@@ -19,7 +19,7 @@ class DrawImage extends Component{
             var top, left, height, width, rotation, leftEye, rightEye;
             ctx.drawImage(img, 0, 0)
             ctx.font = "24px Courier";
-            /* faces.forEach((face)=>{
+            faces.forEach((face)=>{
                 top = face.faceRectangle.top;
                 left = face.faceRectangle.left;
                 height = face.faceRectangle.height;
@@ -42,11 +42,7 @@ class DrawImage extends Component{
                 ctx.restore();
 
                 ctx.save();
-                ctx.strokeStyle = "red";
-                ctx.shadowColor = "red";
-                ctx.shadowBlur = 5;
-                ctx.shadowOffsetX = 0;
-                ctx.shadowOffsetY = 0;
+                ctx.strokeStyle = "rgba(0,0,0,1)";
                 ctx.beginPath();
                 ctx.lineWidth = "1";
                 ctx.arc( leftEye.x, leftEye.y, 2,0,Math.PI*2,true);
@@ -57,7 +53,7 @@ class DrawImage extends Component{
                 ctx.stroke();
                 ctx.restore();
 
-            }) */
+            }) 
         }
     }
 
@@ -70,7 +66,7 @@ class DrawImage extends Component{
                 <div className={classes.canvasWrapper} style={{height: this.props.size.height, width: this.props.size.width}}>
                     <img className={classes.image} ref="image" src={this.props.url}></img>
                     <canvas className={classes.canvas} ref="canvas" width={this.props.size.width} height={this.props.size.height} />
-                    {this.props.res.map( (face) => <LaserEyes face={face}/> )}
+                    {/* {this.props.res.map( (face) => <LaserEyes face={face}/> )} */}
                 </div>
                 <Grid container className={classes.grid} spacing={2}>
                     {this.props.res.map( (face) => {
@@ -93,11 +89,6 @@ class DrawImage extends Component{
             </div>
         )
     }
-}
-
-const styleMyGlow = () => {
-    // return{transform: `rotate(${face.faceAttributes.headPose.roll}deg)`,top:face.faceLandmarks.pupilLeft.y-2,left:face.faceLandmarks.pupilLeft.x-10*}
-    return{transform: `rotate(45deg)`,top:20,left:10}
 }
 
 const colors = {
@@ -146,12 +137,9 @@ const styles = theme => ({
     },
     canvas:{
         position: 'absolute'
-
-        // border: '1px solid blue',
     },
     canvasWrapper:{
         position: 'relative',
-        // border: '1px solid blue',
     }
 });
 
