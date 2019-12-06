@@ -32,14 +32,14 @@ import SettingsSubItems from './SubItems/SettingsSubItems'
                     active: props.location.pathname.includes('/cart'),
                 },
                 {
-                    label:"Testing", 
-                    to:"/testing", 
-                    active: props.location.pathname.includes('/testing'),
+                    label:"Detect Faces", 
+                    to:"/detect", 
+                    active: props.location.pathname.includes('/detect'),
                 },
                 {
-                    label:"Settings", 
-                    to:"/settings", 
-                    active: props.location.pathname.includes('/settings'),
+                    label:"People groups", 
+                    to:"/groups", 
+                    active: props.location.pathname.includes('/groups'),
                 },
             ]
         })

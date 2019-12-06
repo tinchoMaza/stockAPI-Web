@@ -9,18 +9,21 @@ import FavoriteRoundedIcon from '@material-ui/icons/FavoriteRounded'
 import SettingsRoundedIcon from '@material-ui/icons/SettingsRounded'
 import ExpandLessRoundedIcon from '@material-ui/icons/ExpandLessRounded';
 import ExpandMoreRoundedIcon from '@material-ui/icons/ExpandMoreRounded';
+import FaceRoundedIcon from '@material-ui/icons/FaceRounded';
+import GroupAddRoundedIcon from '@material-ui/icons/GroupAddRounded';
 import Divider from '@material-ui/core/Divider';
-
 import {Link} from "react-router-dom"
 import { makeStyles } from '@material-ui/core/styles'
 
 const iconSelector = (label) =>{
     switch(label){
-        case 'Store': return <StoreMallDirectoryRoundedIcon/>
-        case 'Orders': return <FormatListBulletedRoundedIcon/>
-        case 'Cart': return <ShoppingCartRoundedIcon/>
-        case 'Testing': return <FavoriteRoundedIcon/>
-        case 'Settings': return <SettingsRoundedIcon/>
+        case '/store': return <StoreMallDirectoryRoundedIcon/>
+        case '/orders': return <FormatListBulletedRoundedIcon/>
+        case '/cart': return <ShoppingCartRoundedIcon/>
+        case '/favorites': return <FavoriteRoundedIcon/>
+        case '/settings': return <SettingsRoundedIcon/>
+        case '/detect': return <FaceRoundedIcon/>
+        case '/groups' : return <GroupAddRoundedIcon/>
     }
 }
 
@@ -46,7 +49,7 @@ export default function SideBarLink(props) {
                     <Link className={classes.link} to={props.link}>
                         <ListItem button key={props.label} className={classes.item}>
                             <div className={classes.linkInfo} onClick={handleClick}>
-                                <ListItemIcon>{iconSelector(props.label)}</ListItemIcon>
+                                <ListItemIcon>{iconSelector(props.link)}</ListItemIcon>
                                 <ListItemText primary={props.label} />
                             </div>
                             {props.children !== null && openSubcategories && <ExpandLessRoundedIcon onClick={forceClose}/>}

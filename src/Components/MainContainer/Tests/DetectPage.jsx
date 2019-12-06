@@ -2,12 +2,12 @@ import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import { Button, TextField } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
-import DrawImage from './Tests/DrawImage';
+import DrawImage from './DrawImage';
 
 const subscriptionKey = '1dc43d458b104ca6811f8939b159f451';
 const endpoint = 'https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect';
 
-export default function TestingPage() {
+export default function DetectPage() {
     const classes = useStyles();
     const [imageUrl, setImageUrl] = React.useState('https://i.imgur.com/bfJym9mg.jpg');
     const [imageSize, setImageSize] = React.useState({});
@@ -19,7 +19,8 @@ export default function TestingPage() {
         returnFaceLandmarks: "true",
         returnFaceAttributes:
             "age,gender,headPose,smile,facialHair,glasses,emotion," +
-            "hair,makeup,occlusion,accessories,blur,exposure,noise"
+            "hair,makeup,occlusion,accessories,blur,exposure,noise",
+        recognitionModel: 'recognition_02',
       };
       var url = new URL(endpoint);
       Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
@@ -55,7 +56,7 @@ export default function TestingPage() {
 
     return (
         <div className={classes.container}>
-            <Typography variant="h6">Testing Face API</Typography>
+            <Typography variant="h6">Detect faces using Face API</Typography>
             <TextField
                 id="imageUrl"
                 label="Image url"

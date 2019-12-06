@@ -1,10 +1,11 @@
 import React from 'react'
 import ProductsGrid from "../ProductsGrid/ProductsGrid"
 import Home from '../Home/Home'
-import { Switch, Route } from "react-router-dom"
 import OrdersListContainer from '../OrdersList/OrdersListContainer'
+import DetectPage from './Tests/DetectPage'
+import PeopleGroupsPage from './Tests/PeopleGroupsPage'
+import { Switch, Route } from "react-router-dom"
 import { makeStyles } from '@material-ui/core/styles'
-import TestingPage from './TestingPage'
 
 export default function MainContainer(props) {
     const classes = useStyles(props);
@@ -15,8 +16,11 @@ export default function MainContainer(props) {
             <Route path="/" exact>
                     <Home/>
                 </Route>
-                <Route path="/testing" exact>
-                    <TestingPage/>
+                <Route path="/detect" exact>
+                    <DetectPage/>
+                </Route>
+                <Route path="/groups">
+                    <PeopleGroupsPage/>
                 </Route>
                 <Route path="/help">
                     <p>Halp please</p>

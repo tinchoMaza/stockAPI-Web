@@ -16,7 +16,7 @@ class DrawImage extends Component{
             const ctx = canvas.getContext("2d");
             const faces = this.props.res;
             var facesCounter = 0;
-            var top, left, height, width, rotation, leftEye, rightEye;
+            var top, left, height, width, rotation, leftEye, rightEye, sizeMult;
             ctx.drawImage(img, 0, 0)
             ctx.font = "24px Courier";
             faces.forEach((face)=>{
@@ -27,6 +27,7 @@ class DrawImage extends Component{
                 rotation = face.faceAttributes.headPose.roll;
                 leftEye = face.faceLandmarks.pupilLeft;
                 rightEye = face.faceLandmarks.pupilRight;
+                sizeMult = height/80;
 
                 ctx.save();
                 ctx.fillStyle = colors.vivid[facesCounter%8];
@@ -42,14 +43,14 @@ class DrawImage extends Component{
                 ctx.restore();
 
                 ctx.save();
-                ctx.strokeStyle = "rgba(0,0,0,1)";
+                ctx.strokeStyle = "rgba(255,0,0,.4)";
                 ctx.beginPath();
                 ctx.lineWidth = "1";
-                ctx.arc( leftEye.x, leftEye.y, 2,0,Math.PI*2,true);
+                ctx.arc( leftEye.x, leftEye.y, 10*sizeMult,0,Math.PI*2,true);
                 ctx.stroke();
 
                 ctx.beginPath();
-                ctx.arc( rightEye.x, rightEye.y, 2,0,Math.PI*2,true);
+                ctx.arc( rightEye.x, rightEye.y, 10*sizeMult,0,Math.PI*2,true);
                 ctx.stroke();
                 ctx.restore();
 
