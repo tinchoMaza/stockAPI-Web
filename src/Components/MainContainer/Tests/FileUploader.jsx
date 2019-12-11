@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useState, useMemo} from 'react';
 import { useDropzone } from 'react-dropzone';
 import { makeStyles } from '@material-ui/styles';
 import { hexToRgba } from '../../../utils/styling';
@@ -12,13 +12,28 @@ export default function FileUploader() {
         setFile(acceptedFiles[0]);
         setIsSelected(true);
     }, []);
-    const { getRootProps, getInputProps, isDragActive } = useDropzone({
-        onDrop,
-        noClick: file,
-        preventDropOnDocument: true,
-        accept: 'application/zip, application/x-zip-compressed'
-        // disabled:true,
+    const { getRootProps,
+            getInputProps,
+            isDragActive,
+            isDragAccept,
+            isDragReject
+    } = useDropzone({   onDrop,
+                        noClick: file,
+                        preventDropOnDocument: true,
+                        accept: 'application/zip, application/x-zip-compressed'
+                        // disabled:true,
     });
+
+    const style = useMemo(() => ({
+        ...baseStyle,
+        ...(isDragActive ? activeStyle : {}),
+        ...(isDragAccept ? acceptStyle : {}),
+        ...(isDragReject ? rejectStyle : {})
+      }), [
+        isDragActive,
+        isDragReject
+      ]);
+
     const classes = useStyles({ isDragActive, isSelected });
 
     const handleCancel = () => {
@@ -27,7 +42,7 @@ export default function FileUploader() {
     }
 
     return (
-        <div className={classes.container} {...getRootProps()}>
+        <div className={classes.container} {...getRootProps({style})}>
             <input className={classes.input} {...getInputProps()} />
             <div className={classes.innerDiv}>
                 {
@@ -42,7 +57,33 @@ export default function FileUploader() {
     )
 }
 
-
+const baseStyle = {
+    flex: 1,
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    padding: '20px',
+    borderWidth: 2,
+    borderRadius: 2,
+    borderColor: '#eeeeee',
+    borderStyle: 'dashed',
+    backgroundColor: '#fafafa',
+    color: '#bdbdbd',
+    outline: 'none',
+    transition: 'border .24s ease-in-out'
+  };
+  
+  const activeStyle = {
+    borderColor: '#2196f3'
+  };
+  
+  const acceptStyle = {
+    borderColor: '#00e676'
+  };
+  
+  const rejectStyle = {
+    borderColor: '#ff1744'
+  };  
 
 const useStyles = makeStyles(theme => ({
     primaryBtn: {
