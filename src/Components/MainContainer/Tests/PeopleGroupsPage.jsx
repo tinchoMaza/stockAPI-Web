@@ -10,7 +10,13 @@ export default function PeopleGroupsPage() {
             <h1 className={classes.header}>Upload new File</h1>
             <FileUploader/>
         </div>
-    )
+        // <form action="http://localhost:5000/upload-files" method="post" enctype="multipart/form-data">
+        //     Select file to upload:
+        //     <input type="file" name="uploadedFile" id="uploadedFile"></input>
+        //     <input type="submit" value="Upload File" name="submit"></input>
+        // </form>
+    
+        )
 }
   
 const useStyles = makeStyles(theme => ({
