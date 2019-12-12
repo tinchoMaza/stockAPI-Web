@@ -1,15 +1,15 @@
-import React, { useCallback, useState, useMemo} from 'react';
+import React, { useCallback, useState, useMemo, useEffect} from 'react';
 import { useDropzone } from 'react-dropzone';
 import { makeStyles } from '@material-ui/styles';
 import { hexToRgba } from '../../../utils/styling';
 import DroppedFile from './DroppedFile';
 
 export default function FileUploader() {
-    const [file, setFile] = useState();
+    const [files, setFiles] = useState();
     const [isSelected, setIsSelected] = useState(false);
 
     const onDrop = useCallback(acceptedFiles => {
-        setFile(acceptedFiles[0]);
+        setFiles(acceptedFiles);
         setIsSelected(true);
     }, []);
     const { getRootProps,
@@ -18,7 +18,7 @@ export default function FileUploader() {
             isDragAccept,
             isDragReject
     } = useDropzone({   onDrop,
-                        noClick: file,
+                        noClick: files,
                         preventDropOnDocument: true,
                         accept: 'application/zip, application/x-zip-compressed'
                         // disabled:true,
@@ -36,9 +36,17 @@ export default function FileUploader() {
 
     const classes = useStyles({ isDragActive, isSelected });
 
-    const handleCancel = () => {
-        setFile(null);
-        setIsSelected(false);
+    const handleCancel = (file) => {
+        console.log(files)
+        var auxFiles = files;
+        auxFiles.splice( files.indexOf(file), 1 );
+        // debugger;
+
+        if(auxFiles.length === 0){
+            setFiles(null);
+            setIsSelected(false);
+        }
+        else setFiles(auxFiles);
     }
 
     return (
@@ -46,11 +54,11 @@ export default function FileUploader() {
             <input className={classes.input} {...getInputProps()} />
             <div className={classes.innerDiv}>
                 {
-                    file ?
-                        <DroppedFile file={file} handleCancel={handleCancel} /> :
+                    files ?
+                        files.map( (file) => <DroppedFile file={file} key={file.filename} handleCancel={handleCancel} /> ) :
                         isDragActive ?
-                            <p>Drop the file here ...</p> :
-                            <p>Drag 'n' drop, or click to upload the file</p>
+                            <p>Drop the files here ...</p> :
+                            <p>Drag 'n' drop, or click to upload files</p>
                 }
             </div>
         </div>
@@ -58,17 +66,16 @@ export default function FileUploader() {
 }
 
 const baseStyle = {
-    flex: 1,
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     padding: '20px',
     borderWidth: 2,
-    borderRadius: 2,
-    borderColor: '#eeeeee',
+    borderRadius: 10,
+    borderColor: '#ddd',
     borderStyle: 'dashed',
-    backgroundColor: '#fafafa',
-    color: '#bdbdbd',
+    backgroundColor: 'transparent',
+    color: '#555',
     outline: 'none',
     transition: 'border .24s ease-in-out'
   };
@@ -78,11 +85,11 @@ const baseStyle = {
   };
   
   const acceptStyle = {
-    borderColor: '#00e676'
+    borderColor: '#2DCB8B'
   };
   
   const rejectStyle = {
-    borderColor: '#ff1744'
+    borderColor: '#F26767'
   };  
 
 const useStyles = makeStyles(theme => ({
@@ -93,6 +100,8 @@ const useStyles = makeStyles(theme => ({
     innerDiv: {
         display: 'flex',
         flexDirection: 'row',
+        flexWrap: 'wrap',
+        justifyContent: 'center',
         alignItems: 'center',
         height: '100%',
     },
@@ -100,15 +109,15 @@ const useStyles = makeStyles(theme => ({
         border: 'none'
     },
     container: ({ isDragActive, isSelected }) => ({
-        margin: 'auto',
+        margin: '15px',
         cursor: isSelected ? 'default' : 'pointer',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
         transition: '.4s',
         borderRadius: 10,
-        height: 400,
-        width: 400,
+        minHeight: 'max-content',
+        width: '95%',
         backgroundColor: isSelected ? hexToRgba(theme.palette.primary.main, 0.2) : 'transparent',
         border: isSelected ? '2px solid' : '2px dashed',
         borderColor: isDragActive || isSelected ? theme.palette.primary.main : hexToRgba(theme.palette.primary.main, 0.2),

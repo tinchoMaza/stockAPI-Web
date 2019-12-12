@@ -7,7 +7,7 @@ export default function PeopleGroupsPage() {
 
     return (
         <div className={classes.container}>
-            <h1 className={classes.header}>Upload new File</h1>
+            <h1 className={classes.header}>Upload new Files</h1>
             <FileUploader/>
         </div>
         // <form action="http://localhost:5000/upload-files" method="post" enctype="multipart/form-data">
@@ -25,6 +25,7 @@ const useStyles = makeStyles(theme => ({
         color: theme.palette.common.white,
     },
     container: {
+        height: '100%',
         margin: 'auto',
         paddingTop: theme.spacing(1),
         display: 'flex',
